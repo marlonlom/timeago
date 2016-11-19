@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ta_library/ta_library.iml" filepath="$PROJECT_DIR$/ta_library/ta_library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ta_sample/ta_sample.iml" filepath="$PROJECT_DIR$/ta_sample/ta_sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/timeago.iml" filepath="$PROJECT_DIR$/timeago.iml" />
+    </modules>
+  </component>
+</project>
