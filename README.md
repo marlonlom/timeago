@@ -9,12 +9,14 @@ Examples:
 
 Usage:
 
-(1) Default: TimeAgo.from(new java.util.Date().getTime());
+(1) Default: 
+<pre>TimeAgo.from(new java.util.Date().getTime());</pre>
 
 (2) With Specific Locale (by language tag):
 
-Locale LocaleBylanguageTag = Locale.forLanguageTag("es"); 
+<pre>Locale LocaleBylanguageTag = Locale.forLanguageTag("es"); 
 TimeAgoMessages messages = new TimeAgoMessages.Builder().withLocale(LocaleBylanguageTag).build();
 TimeAgo.from(new java.util.Date().getTime(), messages);
+</pre>
 
 
