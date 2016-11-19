@@ -19,4 +19,7 @@ TimeAgoMessages messages = new TimeAgoMessages.Builder().withLocale(LocaleBylang
 TimeAgo.from(new java.util.Date().getTime(), messages);
 </pre>
 
+Sample application:
 
+<iframe src="https://appetize.io/embed/e2d4pnmfmam1z28q4qkcnc2qzw?device=nexus5&scale=75&autoplay=true&orientation=portrait&deviceColor=black" width="300px" height="597px" frameborder="0" scrolling="no"></iframe>
+				
