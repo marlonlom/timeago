@@ -86,41 +86,41 @@ public final class TimeAgo {
 
         long dim = getTimeDistanceInMinutes(time);
 
-        String timeAgo = null;
+        StringBuilder timeAgo = new StringBuilder();
 
         if (dim == 0) {
-            return resources.getPropertyValue("ml.timeago.now");
+            timeAgo.append(resources.getPropertyValue("ml.timeago.now"));
         } else if (dim == 1) {
-            timeAgo = resources.getPropertyValue("ml.timeago.oneminute");
+            timeAgo.append(resources.getPropertyValue("ml.timeago.oneminute"));
         } else if (dim >= 2 && dim <= 44) {
-            timeAgo = resources.getPropertyValue("ml.timeago.xminutes", dim);
+            timeAgo.append(resources.getPropertyValue("ml.timeago.xminutes", dim));
         } else if (dim >= 45 && dim <= 89) {
-            timeAgo = resources.getPropertyValue("ml.timeago.aboutanhour");
+            timeAgo.append(resources.getPropertyValue("ml.timeago.aboutanhour"));
         } else if (dim >= 90 && dim <= 1439) {
             int hours = Math.round(dim / 60);
-            timeAgo = resources.getPropertyValue("ml.timeago.xhours", hours);
+            timeAgo.append(resources.getPropertyValue("ml.timeago.xhours", hours));
         } else if (dim >= 1440 && dim <= 2519) {
-            timeAgo = resources.getPropertyValue("ml.timeago.oneday");
+            timeAgo.append(resources.getPropertyValue("ml.timeago.oneday"));
         } else if (dim >= 2520 && dim <= 43199) {
             int days = Math.round(dim / 1440);
-            timeAgo = resources.getPropertyValue("ml.timeago.xdays", days);
+            timeAgo.append(resources.getPropertyValue("ml.timeago.xdays", days));
         } else if (dim >= 43200 && dim <= 86399) {
-            timeAgo = resources.getPropertyValue("ml.timeago.aboutamonth");
+            timeAgo.append(resources.getPropertyValue("ml.timeago.aboutamonth"));
         } else if (dim >= 86400 && dim <= 525599) {
             int months = Math.round(dim / 43200);
-            timeAgo = resources.getPropertyValue("ml.timeago.xmonths", months);
+            timeAgo.append(resources.getPropertyValue("ml.timeago.xmonths", months));
         } else if (dim >= 525600 && dim <= 655199) {
-            timeAgo = resources.getPropertyValue("ml.timeago.aboutayear");
+            timeAgo.append(resources.getPropertyValue("ml.timeago.aboutayear"));
         } else if (dim >= 655200 && dim <= 914399) {
-            timeAgo = resources.getPropertyValue("ml.timeago.overayear");
+            timeAgo.append(resources.getPropertyValue("ml.timeago.overayear"));
         } else if (dim >= 914400 && dim <= 1051199) {
-            timeAgo = resources.getPropertyValue("ml.timeago.almosttwoyears");
+            timeAgo.append(resources.getPropertyValue("ml.timeago.almosttwoyears"));
         } else {
             int years = Math.round(dim / 525600);
-            timeAgo = resources.getPropertyValue("ml.timeago.xyears", years);
+            timeAgo.append(resources.getPropertyValue("ml.timeago.xyears", years));
         }
 
-        return timeAgo;
+        return timeAgo.toString();
     }
 
     /**
