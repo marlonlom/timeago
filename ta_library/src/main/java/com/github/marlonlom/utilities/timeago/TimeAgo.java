@@ -21,23 +21,23 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * <p>
- * The Class <b>TimeAgo</b>. Performs date time parsing into a text with 'time
- * ago' syntax. <br/>
+ * The Class <b>TimeAgo</b>. Performs date time parsing into a text with 'time ago' syntax.
+ * <br>
+ * <br>
  * Usage:
- * </p>
+ * <br>
+ * <br>
  * <i>(1) Default:</i>
- * <p>
  * <pre>
  * TimeAgo.from(new java.util.Date().getTime());
  * </pre>
- * <p>
+ * <br>
  * <i>(2) With Specific Locale (by language tag):</i>
- * <p>
+ * <br>
  * <pre>
  * Locale LocaleBylanguageTag = Locale.forLanguageTag("es");
  * TimeAgo.from(new java.util.Date().getTime(), new TimeAgoMessages.Builder().withLocale(LocaleBylanguageTag).build());
- * </pre>
+ * </pre><br>
  *
  * @author marlonlom
  * @version 1.0.0
