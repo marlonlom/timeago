@@ -40,9 +40,9 @@ import java.util.Date;
  * </pre><br>
  *
  * @author marlonlom
- * @version 1.0.0
+ * @version 2.0.0
  * @see TimeAgoMessages
- * @since 1.0.0
+ * @since 2.0.0
  */
 public final class TimeAgo {
 
@@ -179,8 +179,8 @@ public final class TimeAgo {
      * The enum Periods.
      *
      * @author marlonlom
-     * @version 1.0.0
-     * @since 1.0.0
+     * @version 2.0.0
+     * @since 2.0.0
      */
     private enum Periods {
 
@@ -357,9 +357,9 @@ public final class TimeAgo {
      * Interface definition for handling distance validations or periods.
      *
      * @author marlonlom
-     * @version 1.0.0
+     * @version 2.0.0
      * @see Periods
-     * @since 1.0.0
+     * @since 2.0.0
      */
     private interface DistancePredicate {
         /**
