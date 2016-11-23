@@ -16,7 +16,7 @@ Gradle:
 <pre>compile 'com.github.marlonlom:timeago:2.0.0'</pre>
 
 
-### Defaults:
+### Default usage:
 
 <pre>TimeAgo.from(new java.util.Date().getTime());</pre>
 
