@@ -22,7 +22,6 @@ Maven:
   <groupId>com.github.marlonlom</groupId>
   <artifactId>timeago</artifactId>
   <version>2.0.0</version>
-  <type>pom</type>
 </dependency>
 ```
 
