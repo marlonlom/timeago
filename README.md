@@ -29,7 +29,7 @@ Maven:
 
 ```java
 /** using java.util.Date*/
-TimeAgo.from(new java.util.Date().getTime());</pre>
+TimeAgo.from(new java.util.Date().getTime());
 /** using java.util.Calendar*/
 TimeAgo.from(java.util.Calendar.getInstance().getTime());
 ```
