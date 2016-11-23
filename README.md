@@ -9,23 +9,39 @@ Simple java library for displaying dates as relative time ago language.
 
 ## Usage:
 
-### Import into your project:
+### Import as a dependency:
 
 Gradle:
 
 <pre>compile 'com.github.marlonlom:timeago:2.0.0'</pre>
 
+Maven:
+
+```xml
+<dependency>
+  <groupId>com.github.marlonlom</groupId>
+  <artifactId>timeago</artifactId>
+  <version>2.0.0</version>
+  <type>pom</type>
+</dependency>
+```
 
 ### Default usage:
 
-<pre>TimeAgo.from(new java.util.Date().getTime());</pre>
+```java
+/** using java.util.Date*/
+TimeAgo.from(new java.util.Date().getTime());</pre>
+/** using java.util.Calendar*/
+TimeAgo.from(java.util.Calendar.getInstance().getTime());
+```
 
 ### With Specific Locale (by language tag):
 
-<pre>Locale LocaleBylanguageTag = Locale.forLanguageTag("es"); 
+```java
+Locale LocaleBylanguageTag = Locale.forLanguageTag("es"); 
 TimeAgoMessages messages = new TimeAgoMessages.Builder().withLocale(LocaleBylanguageTag).build();
 TimeAgo.from(new java.util.Date().getTime(), messages);
-</pre>
+```
 
 
 ## Demo
