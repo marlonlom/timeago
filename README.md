@@ -9,6 +9,13 @@ Simple java library for displaying dates as relative time ago language.
 
 ## Usage:
 
+### Import into your project:
+
+Gradle:
+
+<pre>compile 'com.github.marlonlom:timeago:2.0.0'</pre>
+
+
 ### Defaults:
 
 <pre>TimeAgo.from(new java.util.Date().getTime());</pre>
