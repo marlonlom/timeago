@@ -4,28 +4,12 @@ jdk:
 
 android:
   components:
-    - tools
-    - platform-tools
-    - build-tools-25.0.1
-    - android-25
-    - extra-android-m2repository
-    - extra-android-support
-    - sys-img-x86-android-25
-  licenses:
-    - android-sdk-preview-license-.+
-    - android-sdk-license-.+
-before_script:
-  - echo no | android create avd --force -n test -t android-25 --abi default/x86
-  - emulator -avd test -no-skin -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
-before_cache:
-  - "rm -f $HOME/.gradle/caches/modules-2/modules-2.lock"
-before_install:
-  - "chmod +x gradlew"
-cache:
-  directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
+  - platform-tools
+  - tools
+  - build-tools-24.0.0
+  - android-23
+  - extra-android-m2repository
+
 script:
   - "./gradlew build connectedCheck --stacktrace"
+  - "./gradlew -PdisablePreDex build"
