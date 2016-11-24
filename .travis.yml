@@ -6,10 +6,9 @@ android:
   components:
   - platform-tools
   - tools
-  - build-tools-24.0.0
-  - android-23
+  - build-tools-25.0.0
+  - android-25
   - extra-android-m2repository
 
 script:
-  - "./gradlew build connectedCheck --stacktrace"
   - "./gradlew -PdisablePreDex build"
