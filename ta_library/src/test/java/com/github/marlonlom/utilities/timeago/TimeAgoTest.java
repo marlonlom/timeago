@@ -31,8 +31,8 @@ import java.util.Locale;
  * Unit tests Class for TimeAgo usage.
  *
  * @author marlonlom
- * @version 2.0.0
- * @since 2.0.0
+ * @version 2.1.0
+ * @since 2.1.0
  */
 @RunWith(JUnit4.class)
 public class TimeAgoTest {

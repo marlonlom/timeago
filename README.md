@@ -36,7 +36,7 @@ TimeAgo.from(java.util.Calendar.getInstance().getTime().getTime());
 
 ### With Specific Locale (by language tag):
 
-Languages suppported: Spanish (es), English (en), German (de), French (fr), Italian (it), Portuguese (pt).
+Languages supported: Spanish (es), English (en), German (de), French (fr), Italian (it), Portuguese (pt).
 
 ```java
 Locale LocaleBylanguageTag = Locale.forLanguageTag("es"); 
