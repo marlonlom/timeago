@@ -1,5 +1,6 @@
 # TimeAgo
 
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.marlonlom/timeago.svg)](http://www.mvnrepository.com/artifact/com.github.marlonlom/timeago)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Timeago-brightgreen.svg?style=flat)]()
 [![Download](https://api.bintray.com/packages/marlonlom/timeago/timeago/images/download.svg) ](https://bintray.com/marlonlom/timeago/timeago/_latestVersion)
 [![Build Status](https://travis-ci.org/marlonlom/timeago.svg?branch=master)](https://travis-ci.org/marlonlom/timeago)
