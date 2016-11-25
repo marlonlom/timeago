@@ -20,7 +20,7 @@ Simple java library for displaying dates as relative time ago language.
 
 Gradle:
 
-<pre>compile 'com.github.marlonlom:timeago:2.0.0'</pre>
+<pre>compile 'com.github.marlonlom:timeago:$latestVersion'</pre>
 
 Maven:
 
@@ -28,7 +28,7 @@ Maven:
 <dependency>
   <groupId>com.github.marlonlom</groupId>
   <artifactId>timeago</artifactId>
-  <version>2.0.0</version>
+  <version>$latestVersion</version>
 </dependency>
 ```
 
