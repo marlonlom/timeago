@@ -1,7 +1,7 @@
 # TimeAgo
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.marlonlom/timeago.svg)](http://www.mvnrepository.com/artifact/com.github.marlonlom/timeago)
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Timeago-brightgreen.svg?style=flat)]()
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Timeago-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/4707)
 [![Download](https://api.bintray.com/packages/marlonlom/timeago/timeago/images/download.svg) ](https://bintray.com/marlonlom/timeago/timeago/_latestVersion)
 [![Build Status](https://travis-ci.org/marlonlom/timeago.svg?branch=master)](https://travis-ci.org/marlonlom/timeago)
 <a href="http://www.methodscount.com/?lib=com.github.marlonlom%3Atimeago%3A%2B"><img src="https://img.shields.io/badge/Methods and size-74 | 22 KB-e91e63.svg"/></a>
