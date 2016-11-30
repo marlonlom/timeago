@@ -48,7 +48,7 @@ import java.util.ResourceBundle;
  * </p>
  *
  * @author marlonlom
- * @version 2.1.0
+ * @version 3.0.0
  * @since   1.0.0
  */
 public final class TimeAgoMessages {

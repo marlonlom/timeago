@@ -20,7 +20,9 @@ Simple java library for displaying dates as relative time ago language.
 
 Gradle:
 
-<pre>compile 'com.github.marlonlom:timeago:$latestVersion'</pre>
+```
+compile 'com.github.marlonlom:timeago:$latestVersion'
+```
 
 Maven:
 
@@ -32,29 +34,37 @@ Maven:
 </dependency>
 ```
 
-### Default usage:
+### Use it in your code:
 
 ```java
-/** using java.util.Date*/
-TimeAgo.from(new java.util.Date().getTime());
-/** using java.util.Calendar*/
-TimeAgo.from(java.util.Calendar.getInstance().getTime().getTime());
+String text = TimeAgo.using(timeInMillis);
+```
+
+Where _timeInMillis_, based on current date and time, is defined like 
+
+```java
+/* You can use java.util.Calendar.getInstance().getTimeInMillis()*/
+/* Also, with java 8, java.time.Instant.now().toEpochMilli() */
+
+long timeInMillis = System.currentTimeMillis();
 ```
 
 ### With Specific Locale (by language tag):
 
-Languages supported: Spanish (es), English (en), German (de), French (fr), Italian (it), Portuguese (pt).
+For specific language usage, use _TimeAgoMessages_:
 
 ```java
 Locale LocaleBylanguageTag = Locale.forLanguageTag("es"); 
 TimeAgoMessages messages = new TimeAgoMessages.Builder().withLocale(LocaleBylanguageTag).build();
-TimeAgo.from(new java.util.Date().getTime(), messages);
+
+String text = TimeAgo.using(timeInMillis, messages);
 ```
 
+Languages supported: Spanish (es), English (en), German (de), French (fr), Italian (it), Portuguese (pt).
 
 ## Demo
 
-Check the [Demo](https://goo.gl/hracI1) here.
+Check the [Demo](https://goo.gl/y66vh4) here.
 
 ##Spread the word
 

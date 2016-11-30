@@ -17,25 +17,30 @@
 
 <resources>
     <string name="app_name">TimeAgo</string>
-    <string name="ta_sample_detail" formatted="false"><![CDATA[
-
-        <b>Usage:</b>
-        <br/>
+    <string name="title_activity_tabbed_main">TimeAgo</string>
+    <string name="action_settings">Settings</string>
+    <string name="tabbed_main_tab_how_to">How to use</string>
+    <string name="tabbed_main_tab_from">Elapsed</string>
+    <string name="tabbed_main_tab_until">Remaining</string>
+    <string name="tabbed_main_detail_item" formatted="false">
+        <![CDATA[&nbsp;<i>%s</i>&nbsp;&minus;&nbsp;%s<br>]]>
+    </string>
+    <string name="tabbed_main_detail_how_to" formatted="false">
+        <![CDATA[
+        Input some date time value as milliseconds:
+        <br><br>
+        <i>long time = System.currentTimeMillis();</i>
+        <br><br>
+        Use the <b>TimeAgo</b> class:
+        <br><br>
         <i>
-        java.util.Calendar date = java.util.Calendar.getInstance().getTime();
-        <br/>
-        String timeAgo = TimeAgo.from(date.getTime() [, new TimeAgoMessages.Builder().defaultLocale().build()]);
+            String timeAgo = TimeAgo.using(time<br> [, new TimeAgoMessages.Builder()<br> .defaultLocale().build()]);
         </i>
-        <br/><br/>
-        <b>Examples</b>
-        <br/>
-        <span>&nbsp;&nbsp;%s</span><br/>
-        <span>&nbsp;&nbsp;%s</span><br/>
-        <span>&nbsp;&nbsp;%s</span><br/>
-        <span>&nbsp;&nbsp;%s</span>
-        <br/>
-        <center>…</center>
-        <br/>
-        <br/>
-    ]]></string>
+        <br><br>
+        For specific language usage, use <b>TimeAgoMessages</b>.
+        <br><br><i>Languages supported</i>: Spanish (es), English (en), German (de), French (fr), Italian (it), Portuguese (pt).
+        ]]>
+    </string>
+    <string name="tabbed_main_detail_from" formatted="false"><![CDATA[%s<br>]]></string>
+    <string name="tabbed_main_detail_until" formatted="false"><![CDATA[%s<br>]]></string>
 </resources>

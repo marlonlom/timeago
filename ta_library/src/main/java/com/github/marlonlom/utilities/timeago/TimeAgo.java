@@ -17,9 +17,6 @@
 
 package com.github.marlonlom.utilities.timeago;
 
-import java.util.Calendar;
-import java.util.Date;
-
 /**
  * The Class <b>TimeAgo</b>. Performs date time parsing into a text with 'time ago' syntax.
  * <br>
@@ -29,18 +26,18 @@ import java.util.Date;
  * <br>
  * <i>(1) Default:</i>
  * <pre>
- * TimeAgo.from(new java.util.Date().getTime());
+ * TimeAgo.using(new java.util.Date().getTime());
  * </pre>
  * <br>
  * <i>(2) With Specific Locale (by language tag):</i>
  * <br>
  * <pre>
  * Locale LocaleBylanguageTag = Locale.forLanguageTag("es");
- * TimeAgo.from(new java.util.Date().getTime(), new TimeAgoMessages.Builder().withLocale(LocaleBylanguageTag).build());
+ * TimeAgo.using(new java.util.Date().getTime(), new TimeAgoMessages.Builder().withLocale(LocaleBylanguageTag).build());
  * </pre><br>
  *
  * @author marlonlom
- * @version 2.1.0
+ * @version 3.0.0
  * @see TimeAgoMessages
  * @since 1.0.0
  */
@@ -56,38 +53,30 @@ public final class TimeAgo {
 
     /**
      * <p>
-     * Returns the 'time ago' formatted text from date time.
+     * Returns the 'time ago' formatted text using date time.
      * </p>
      *
      * @param time the date time for parsing
-     * @return the 'time ago' formatted text from date time
+     * @return the 'time ago' formatted text using date time
      * @see TimeAgoMessages
      */
-    public static String from(final long time) {
-        return from(time, new TimeAgoMessages.Builder().defaultLocale().build());
+    public static String using(final long time) {
+        return using(time, new TimeAgoMessages.Builder().defaultLocale().build());
     }
 
     /**
      * <p>
-     * Returns the 'time ago' formatted text from date time.
+     * Returns the 'time ago' formatted text using date time.
      * </p>
      *
      * @param time      the date time for parsing
      * @param resources the resources for localizing messages
-     * @return the 'time ago' formatted text from date time
+     * @return the 'time ago' formatted text using date time
      * @see TimeAgoMessages
      */
-    public static String from(final long time, final TimeAgoMessages resources) {
-        long now = getCurrentDate().getTime();
-
-        if (time > now || time <= 0) {
-            return null;
-        }
-
+    public static String using(final long time, final TimeAgoMessages resources) {
         final long dim = getTimeDistanceInMinutes(time);
-
         final StringBuilder timeAgo = buildTimeagoText(resources, dim);
-
         return timeAgo.toString();
     }
 
@@ -105,30 +94,59 @@ public final class TimeAgo {
         if (foundTimePeriod != null) {
             final String periodKey = foundTimePeriod.getPropertyKey();
             switch (foundTimePeriod) {
-                case XMINUTES:
+                case XMINUTES_PAST:
                     timeAgo.append(resources.getPropertyValue(periodKey, dim));
                     break;
-                case XHOURS:
+                case XHOURS_PAST:
                     int hours = Math.round(dim / 60);
                     final String xHoursText = handlePeriodKeyAsPlural(resources,
-                            "ml.timeago.aboutanhour", periodKey, hours);
+                            "ml.timeago.aboutanhour.past", periodKey, hours);
                     timeAgo.append(xHoursText);
                     break;
-                case XDAYS:
+                case XDAYS_PAST:
                     int days = Math.round(dim / 1440);
                     final String xDaysText = handlePeriodKeyAsPlural(resources,
-                            "ml.timeago.oneday", periodKey, days);
+                            "ml.timeago.oneday.past", periodKey, days);
                     timeAgo.append(xDaysText);
                     break;
-                case XMONTHS:
+                case XMONTHS_PAST:
                     int months = Math.round(dim / 43200);
                     final String xMonthsText = handlePeriodKeyAsPlural(resources,
-                            "ml.timeago.aboutamonth", periodKey, months);
+                            "ml.timeago.aboutamonth.past", periodKey, months);
                     timeAgo.append(xMonthsText);
                     break;
-                case XYEARS:
+                case XYEARS_PAST:
                     int years = Math.round(dim / 525600);
                     timeAgo.append(resources.getPropertyValue(periodKey, years));
+                    break;
+                case XMINUTES_FUTURE:
+                    timeAgo.append(resources.getPropertyValue(periodKey, Math.abs((float) dim)));
+                    break;
+                case XHOURS_FUTURE:
+                    int hours1 = Math.abs(Math.round(dim / 60f));
+                    final String yHoursText = hours1 == 24
+                            ? resources.getPropertyValue("ml.timeago.oneday.future")
+                            : handlePeriodKeyAsPlural(resources, "ml.timeago.aboutanhour.future",
+                            periodKey, hours1);
+                    timeAgo.append(yHoursText);
+                    break;
+                case XDAYS_FUTURE:
+                    int days1 = Math.abs(Math.round(dim / 1440f));
+                    final String yDaysText = handlePeriodKeyAsPlural(resources,
+                            "ml.timeago.oneday.future", periodKey, days1);
+                    timeAgo.append(yDaysText);
+                    break;
+                case XMONTHS_FUTURE:
+                    int months1 = Math.abs(Math.round(dim / 43200f));
+                    final String yMonthsText = months1 == 12
+                            ? resources.getPropertyValue("ml.timeago.aboutayear.future")
+                            : handlePeriodKeyAsPlural(resources,
+                            "ml.timeago.aboutamonth.future", periodKey, months1);
+                    timeAgo.append(yMonthsText);
+                    break;
+                case XYEARS_FUTURE:
+                    int years1 = Math.abs(Math.round(dim / 525600f));
+                    timeAgo.append(resources.getPropertyValue(periodKey, years1));
                     break;
                 default:
                     timeAgo.append(resources.getPropertyValue(periodKey));
@@ -148,20 +166,10 @@ public final class TimeAgo {
      */
     private static String handlePeriodKeyAsPlural(final TimeAgoMessages resources,
                                                   final String periodKey,
-                                                  final String pluralKey,
-                                                  final int value) {
+                                                  final String pluralKey, final int value) {
         return value == 1
                 ? resources.getPropertyValue(periodKey)
                 : resources.getPropertyValue(pluralKey, value);
-    }
-
-    /**
-     * Returns the current date.
-     *
-     * @return the current date
-     */
-    private static Date getCurrentDate() {
-        return Calendar.getInstance().getTime();
     }
 
     /**
@@ -171,136 +179,169 @@ public final class TimeAgo {
      * @return the time distance in minutes
      */
     private static long getTimeDistanceInMinutes(long time) {
-        long timeDistance = getCurrentDate().getTime() - time;
-        return Math.round((Math.abs(timeDistance) / 1000) / 60);
+        long timeDistance = System.currentTimeMillis() - time;
+        return Math.round((timeDistance / 1000) / 60);
     }
 
     /**
      * The enum Periods.
      *
      * @author marlonlom
-     * @version 2.1.0
-     * @since 1.0.0
+     * @version 3.0.0
+     * @since 2.0.0
      */
     private enum Periods {
 
-        /**
-         * The Now.
-         */
         NOW("ml.timeago.now", new DistancePredicate() {
             @Override
             public boolean validateDistanceMinutes(final long distance) {
                 return distance == 0;
             }
         }),
-        /**
-         * The One minute.
-         */
-        ONE_MINUTE("ml.timeago.oneminute", new DistancePredicate() {
+        ONEMINUTE_PAST("ml.timeago.oneminute.past", new DistancePredicate() {
             @Override
             public boolean validateDistanceMinutes(final long distance) {
                 return distance == 1;
             }
         }),
-        /**
-         * The Xminutes.
-         */
-        XMINUTES("ml.timeago.xminutes", new DistancePredicate() {
+        XMINUTES_PAST("ml.timeago.xminutes.past", new DistancePredicate() {
             @Override
             public boolean validateDistanceMinutes(final long distance) {
                 return distance >= 2 && distance <= 44;
             }
         }),
-        /**
-         * The About an hour.
-         */
-        ABOUT_AN_HOUR("ml.timeago.aboutanhour", new DistancePredicate() {
+        ABOUTANHOUR_PAST("ml.timeago.aboutanhour.past", new DistancePredicate() {
             @Override
             public boolean validateDistanceMinutes(final long distance) {
                 return distance >= 45 && distance <= 89;
             }
         }),
-        /**
-         * The Xhours.
-         */
-        XHOURS("ml.timeago.xhours", new DistancePredicate() {
+        XHOURS_PAST("ml.timeago.xhours.past", new DistancePredicate() {
             @Override
             public boolean validateDistanceMinutes(final long distance) {
                 return distance >= 90 && distance <= 1439;
             }
         }),
-        /**
-         * The One day.
-         */
-        ONE_DAY("ml.timeago.oneday", new DistancePredicate() {
+        ONEDAY_PAST("ml.timeago.oneday.past", new DistancePredicate() {
             @Override
             public boolean validateDistanceMinutes(final long distance) {
                 return distance >= 1440 && distance <= 2519;
             }
         }),
-        /**
-         * The Xdays.
-         */
-        XDAYS("ml.timeago.xdays", new DistancePredicate() {
+        XDAYS_PAST("ml.timeago.xdays.past", new DistancePredicate() {
             @Override
             public boolean validateDistanceMinutes(final long distance) {
                 return distance >= 2520 && distance <= 43199;
             }
         }),
-        /**
-         * The About a month.
-         */
-        ABOUT_A_MONTH("ml.timeago.aboutamonth", new DistancePredicate() {
+        ABOUTAMONTH_PAST("ml.timeago.aboutamonth.past", new DistancePredicate() {
             @Override
             public boolean validateDistanceMinutes(final long distance) {
                 return distance >= 43200 && distance <= 86399;
             }
         }),
-        /**
-         * The Xmonths.
-         */
-        XMONTHS("ml.timeago.xmonths", new DistancePredicate() {
+        XMONTHS_PAST("ml.timeago.xmonths.past", new DistancePredicate() {
             @Override
             public boolean validateDistanceMinutes(final long distance) {
                 return distance >= 86400 && distance <= 525599;
             }
         }),
-        /**
-         * The About a year.
-         */
-        ABOUT_A_YEAR("ml.timeago.aboutayear", new DistancePredicate() {
+        ABOUTAYEAR_PAST("ml.timeago.aboutayear.past", new DistancePredicate() {
             @Override
             public boolean validateDistanceMinutes(final long distance) {
                 return distance >= 525600 && distance <= 655199;
             }
         }),
-        /**
-         * The Over a year.
-         */
-        OVER_A_YEAR("ml.timeago.overayear", new DistancePredicate() {
+        OVERAYEAR_PAST("ml.timeago.overayear.past", new DistancePredicate() {
             @Override
             public boolean validateDistanceMinutes(final long distance) {
                 return distance >= 655200 && distance <= 914399;
             }
         }),
-        /**
-         * The Almost two years.
-         */
-        ALMOST_TWO_YEARS("ml.timeago.almosttwoyears", new DistancePredicate() {
+        ALMOSTTWOYEARS_PAST("ml.timeago.almosttwoyears.past", new DistancePredicate() {
             @Override
             public boolean validateDistanceMinutes(final long distance) {
                 return distance >= 914400 && distance <= 1051199;
             }
         }),
-        /**
-         * The Xyears.
-         */
-        XYEARS("ml.timeago.xyears", new DistancePredicate() {
+        XYEARS_PAST("ml.timeago.xyears.past", new DistancePredicate() {
             @Override
             public boolean validateDistanceMinutes(final long distance) {
                 return Math.round(distance / 525600) > 1;
             }
-        }),;
+        }),
+        ONEMINUTE_FUTURE("ml.timeago.oneminute.future", new DistancePredicate() {
+            @Override
+            public boolean validateDistanceMinutes(final long distance) {
+                return distance == -1;
+            }
+        }),
+        XMINUTES_FUTURE("ml.timeago.xminutes.future", new DistancePredicate() {
+            @Override
+            public boolean validateDistanceMinutes(final long distance) {
+                return distance <= -2 && distance >= -44;
+            }
+        }),
+        ABOUTANHOUR_FUTURE("ml.timeago.aboutanhour.future", new DistancePredicate() {
+            @Override
+            public boolean validateDistanceMinutes(final long distance) {
+                return distance <= -45 && distance >= -89;
+            }
+        }),
+        XHOURS_FUTURE("ml.timeago.xhours.future", new DistancePredicate() {
+            @Override
+            public boolean validateDistanceMinutes(final long distance) {
+                return distance <= -90 && distance >= -1439;
+            }
+        }),
+        ONEDAY_FUTURE("ml.timeago.oneday.future", new DistancePredicate() {
+            @Override
+            public boolean validateDistanceMinutes(final long distance) {
+                return distance <= -1440 && distance >= -2519;
+            }
+        }),
+        XDAYS_FUTURE("ml.timeago.xdays.future", new DistancePredicate() {
+            @Override
+            public boolean validateDistanceMinutes(final long distance) {
+                return distance <= -2520 && distance >= -43199;
+            }
+        }),
+        ABOUTAMONTH_FUTURE("ml.timeago.aboutamonth.future", new DistancePredicate() {
+            @Override
+            public boolean validateDistanceMinutes(final long distance) {
+                return distance <= -43200 && distance >= -86399;
+            }
+        }),
+        XMONTHS_FUTURE("ml.timeago.xmonths.future", new DistancePredicate() {
+            @Override
+            public boolean validateDistanceMinutes(final long distance) {
+                return distance <= -86400 && distance >= -525599;
+            }
+        }),
+        ABOUTAYEAR_FUTURE("ml.timeago.aboutayear.future", new DistancePredicate() {
+            @Override
+            public boolean validateDistanceMinutes(final long distance) {
+                return distance <= -525600 && distance >= -655199;
+            }
+        }),
+        OVERAYEAR_FUTURE("ml.timeago.overayear.future", new DistancePredicate() {
+            @Override
+            public boolean validateDistanceMinutes(final long distance) {
+                return distance <= -655200 && distance >= -914399;
+            }
+        }),
+        ALMOSTTWOYEARS_FUTURE("ml.timeago.almosttwoyears.future", new DistancePredicate() {
+            @Override
+            public boolean validateDistanceMinutes(final long distance) {
+                return distance <= -914400 && distance >= -1051199;
+            }
+        }),
+        XYEARS_FUTURE("ml.timeago.xyears.future", new DistancePredicate() {
+            @Override
+            public boolean validateDistanceMinutes(final long distance) {
+                return Math.round(distance / 525600) < -1;
+            }
+        });
 
         /**
          * The property key.
@@ -357,7 +398,7 @@ public final class TimeAgo {
      * Interface definition for handling distance validations or periods.
      *
      * @author marlonlom
-     * @version 2.1.0
+     * @version 3.0.0
      * @see Periods
      * @since 1.0.0
      */
