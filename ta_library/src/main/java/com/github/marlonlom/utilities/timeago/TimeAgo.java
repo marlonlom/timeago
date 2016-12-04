@@ -32,12 +32,12 @@ package com.github.marlonlom.utilities.timeago;
  * <i>(2) With Specific Locale (by language tag):</i>
  * <br>
  * <pre>
- * Locale LocaleBylanguageTag = Locale.forLanguageTag("es");
+ * Locale LocaleByLanguageTag = Locale.forLanguageTag("es");
  * TimeAgo.using(new java.util.Date().getTime(), new TimeAgoMessages.Builder().withLocale(LocaleBylanguageTag).build());
  * </pre><br>
  *
  * @author marlonlom
- * @version 3.0.0
+ * @version 3.0.1
  * @see TimeAgoMessages
  * @since 1.0.0
  */
@@ -84,7 +84,7 @@ public final class TimeAgo {
      * Build timeago text string builder.
      *
      * @param resources the resources
-     * @param dim       the dim
+     * @param dim       the distance in minutes from now
      * @return the string builder
      */
     private static StringBuilder buildTimeagoText(TimeAgoMessages resources, long dim) {
@@ -187,7 +187,7 @@ public final class TimeAgo {
      * The enum Periods.
      *
      * @author marlonlom
-     * @version 3.0.0
+     * @version 3.0.1
      * @since 2.0.0
      */
     private enum Periods {
@@ -398,7 +398,7 @@ public final class TimeAgo {
      * Interface definition for handling distance validations or periods.
      *
      * @author marlonlom
-     * @version 3.0.0
+     * @version 3.0.1
      * @see Periods
      * @since 1.0.0
      */
