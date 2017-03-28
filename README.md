@@ -66,7 +66,7 @@ Languages supported: Spanish (es), English (en), German (de), French (fr), Itali
 
 Check the [Demo](https://goo.gl/y66vh4) here.
 
-##Spread the word
+## Spread the word
 
 If you like this library, please tell others about it :thumbsup::thumbsup:
 
@@ -78,7 +78,7 @@ If you like this library, please tell others about it :thumbsup::thumbsup:
  - Contact me on **LinkedIn**: [**Marlonlom**](https://co.linkedin.com/in/marlonlom)
 
 
-###License
+### License
 
 ```
 Copyright 2016 marlonlom
