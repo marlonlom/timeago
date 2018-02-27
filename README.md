@@ -1,4 +1,5 @@
-# TimeAgo
+# Arabic TimeAgo Library
+ Add Arabic language to TimeAgo  library
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.marlonlom/timeago.svg)](http://www.mvnrepository.com/artifact/com.github.marlonlom/timeago)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Timeago-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/4707)
