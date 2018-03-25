@@ -22,5 +22,18 @@
       <file value="file://$PROJECT_DIR$/ta_library/src/main/resources/com/github/marlonlom/utilities/timeago/messages_pt.properties" />
       <base-name>messages</base-name>
     </custom-resource-bundle>
+    <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/ta_library/src/main/resources/com/github/marlonlom/utilities/timeago/messages.properties" />
+      <file value="file://$PROJECT_DIR$/ta_library/src/main/resources/com/github/marlonlom/utilities/timeago/messages_ar.properties" />
+      <file value="file://$PROJECT_DIR$/ta_library/src/main/resources/com/github/marlonlom/utilities/timeago/messages_cs.properties" />
+      <file value="file://$PROJECT_DIR$/ta_library/src/main/resources/com/github/marlonlom/utilities/timeago/messages_de.properties" />
+      <file value="file://$PROJECT_DIR$/ta_library/src/main/resources/com/github/marlonlom/utilities/timeago/messages_en.properties" />
+      <file value="file://$PROJECT_DIR$/ta_library/src/main/resources/com/github/marlonlom/utilities/timeago/messages_es.properties" />
+      <file value="file://$PROJECT_DIR$/ta_library/src/main/resources/com/github/marlonlom/utilities/timeago/messages_fr.properties" />
+      <file value="file://$PROJECT_DIR$/ta_library/src/main/resources/com/github/marlonlom/utilities/timeago/messages_id.properties" />
+      <file value="file://$PROJECT_DIR$/ta_library/src/main/resources/com/github/marlonlom/utilities/timeago/messages_it.properties" />
+      <file value="file://$PROJECT_DIR$/ta_library/src/main/resources/com/github/marlonlom/utilities/timeago/messages_pt.properties" />
+      <base-name>messages</base-name>
+    </custom-resource-bundle>
   </component>
 </project>
