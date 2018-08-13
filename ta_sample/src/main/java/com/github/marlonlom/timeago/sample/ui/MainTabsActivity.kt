@@ -36,6 +36,8 @@ import java.util.*
 
 /**
  * The type Main tabs activity.
+ *
+ * @author marlonlom
  */
 class MainTabsActivity : AppCompatActivity() {
 
@@ -90,6 +92,7 @@ class MainTabsActivity : AppCompatActivity() {
             return rootView
         }
 
+        @Suppress("DEPRECATION")
         private fun prepareInformationByTabNumber(rootView: View) {
             val tabRef = arguments!!.getInt(ARG_SECTION_NUMBER)
             val builder = StringBuilder()
@@ -170,19 +173,16 @@ class MainTabsActivity : AppCompatActivity() {
      */
     (fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
-        override fun getItem(position: Int): Fragment {
-            return PlaceholderFragment.newInstance(position)
-        }
+        override fun getItem(position: Int): Fragment =
+                PlaceholderFragment.newInstance(position)
 
         override fun getCount(): Int = 3
 
-        override fun getPageTitle(position: Int): CharSequence? {
-            when (position) {
-                0 -> return getString(R.string.tabbed_main_tab_how_to)
-                1 -> return getString(R.string.tabbed_main_tab_from)
-                2 -> return getString(R.string.tabbed_main_tab_until)
-            }
-            return null
+        override fun getPageTitle(position: Int): CharSequence? = when (position) {
+            0 -> getString(R.string.tabbed_main_tab_how_to)
+            1 -> getString(R.string.tabbed_main_tab_from)
+            2 -> getString(R.string.tabbed_main_tab_until)
+            else -> null
         }
     }
 }

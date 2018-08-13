@@ -28,7 +28,7 @@ import java.util.*
  * Unit tests Class for TimeAgo usage.
  *
  * @author marlonlom
- * @version 3.0.1
+ * @version 4.0.0
  * @since 2.1.0
  */
 @RunWith(JUnit4::class)

@@ -38,7 +38,7 @@ package com.github.marlonlom.utilities.timeago
  * <br></br>
  *
  * @author marlonlom
- * @version 3.0.1
+ * @version 4.0.0
  * @see TimeAgoMessages
  *
  * @since 1.0.0
@@ -53,7 +53,7 @@ private constructor() {
      * The enum Periods.
      *
      * @author marlonlom
-     * @version 3.0.1
+     * @version 4.0.0
      * @since 2.0.0
      */
     private enum class Periods(
@@ -219,7 +219,7 @@ private constructor() {
      * Interface definition for handling distance validations or periods.
      *
      * @author marlonlom
-     * @version 3.0.1
+     * @version 4.0.0
      * @see Periods
      *
      * @since 1.0.0

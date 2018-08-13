@@ -22,6 +22,8 @@ import java.util.Calendar
 
 /**
  * The type Calendar sample data util.
+ *
+ * @author marlonlom
  */
 object CalendarSampleDataUtil {
 
