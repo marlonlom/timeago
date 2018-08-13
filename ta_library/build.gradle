@@ -16,9 +16,19 @@
  */
 
 apply plugin: 'java'
+apply plugin: "kotlin"
+apply plugin: 'org.jetbrains.dokka'
+
 
 targetCompatibility = '1.6'
 sourceCompatibility = '1.6'
+
+dokka {
+    outputFormat = 'html'
+    outputDirectory = "$buildDir/javadoc"
+    jdkVersion = 6
+    skipDeprecated = false
+}
 
 task sourcesJar(type: Jar) {
     classifier 'sources'
@@ -27,7 +37,7 @@ task sourcesJar(type: Jar) {
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier 'javadoc'
-    from javadoc.destinationDir
+    from(dokka)
 }
 
 artifacts {
@@ -37,7 +47,8 @@ artifacts {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    testImplementation 'junit:junit:4.12'
+    testImplementation"org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 }
 
