@@ -244,6 +244,7 @@ private constructor() {
          * @return the 'time ago' formatted text using date time
          * @see TimeAgoMessages
          */
+        @JvmStatic
         @JvmOverloads
         fun using(time: Long, resources: TimeAgoMessages = TimeAgoMessages.Builder().defaultLocale().build()): String {
             val dim = getTimeDistanceInMinutes(time)
