@@ -42,11 +42,11 @@ import java.util.ResourceBundle
  *
  *
  * *Tip: available languages for messages: spanish (es), english (en), german
- * (de), french (fr), italian (it), portuguese (pt)*
+ * (de), french (fr), italian (it), portuguese (pt) and more...*
  *
  *
  * @author marlonlom
- * @version 4.0.1
+ * @version 4.0.2
  * @since   1.0.0
  */
 class TimeAgoMessages
