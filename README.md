@@ -60,7 +60,7 @@ TimeAgoMessages messages = new TimeAgoMessages.Builder().withLocale(LocaleBylang
 String text = TimeAgo.using(timeInMillis, messages);
 ```
 
-Languages supported: Spanish (es), English (en), German (de), French (fr), Italian (it), Portuguese (pt), Indonesian (id), Czech (cs), Arabic (ar).
+Languages supported: Spanish (es), English (en), Dutch (nl), German (de), French (fr), Italian (it), Portuguese (pt), Indonesian (id), Czech (cs), Arabic (ar).
 
 ## Demo
 
