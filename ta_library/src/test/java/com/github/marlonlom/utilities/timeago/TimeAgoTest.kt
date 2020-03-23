@@ -74,7 +74,7 @@ class TimeAgoTest {
      */
     private fun getExpectedMessage(key: String, vararg values: Int): String {
         val bundledMessage = localBundle!!.getString(key)
-        return if (values.size > 0) {
+        return if (values.isNotEmpty()) {
             bundledMessage.replace("{0}", values[0].toString())
         } else bundledMessage
     }
@@ -268,8 +268,10 @@ class TimeAgoTest {
      */
     @Test
     fun shouldShowFutureDateTimeWithAlmostOneMonth() {
-        val calendar = Calendar.getInstance()
-        calendar.add(Calendar.DAY_OF_MONTH, 30)
+        val calendar = Calendar.getInstance().apply {
+            add(Calendar.DAY_OF_MONTH, 30)
+            add(Calendar.HOUR, 15)
+        }
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
         val expected = getExpectedMessage("ml.timeago.aboutamonth.future")
         Assert.assertEquals(expected, results)
@@ -352,6 +354,6 @@ class TimeAgoTest {
         /**
          * The available languages array.
          */
-        private val LANGUAGES_ARRAY = "es;en;de;fr;it;pt".split(";".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+        private val LANGUAGES_ARRAY = "ar;cs;da;de;en;es;eu;fa;fr;in;it;nl;pt;tr".split(";".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
     }
 }
