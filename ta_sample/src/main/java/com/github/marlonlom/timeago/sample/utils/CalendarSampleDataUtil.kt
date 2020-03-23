@@ -17,8 +17,7 @@
 
 package com.github.marlonlom.timeago.sample.utils
 
-import java.util.ArrayList
-import java.util.Calendar
+import java.util.*
 
 /**
  * The type Calendar sample data util.

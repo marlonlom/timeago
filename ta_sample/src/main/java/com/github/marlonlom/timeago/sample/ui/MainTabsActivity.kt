@@ -18,18 +18,18 @@
 package com.github.marlonlom.timeago.sample.ui
 
 import android.os.Bundle
-import com.google.android.material.tabs.TabLayout
+import android.text.Html
+import android.view.*
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import androidx.appcompat.app.AppCompatActivity
-import android.text.Html
-import android.view.*
-import android.widget.TextView
 import com.github.marlonlom.timeago.sample.R
 import com.github.marlonlom.timeago.sample.utils.CalendarSampleDataUtil
 import com.github.marlonlom.utilities.timeago.TimeAgo
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main_tabs.*
 import java.text.SimpleDateFormat
 import java.util.*

@@ -18,8 +18,7 @@
 package com.github.marlonlom.utilities.timeago
 
 import java.text.MessageFormat
-import java.util.Locale
-import java.util.ResourceBundle
+import java.util.*
 
 /**
  * The Class **TimeAgoMessages**. it contains a [ResourceBundle] for
