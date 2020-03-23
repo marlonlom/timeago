@@ -45,7 +45,7 @@ import java.util.*
  *
  *
  * @author marlonlom
- * @version 4.0.2
+ * @version 4.0.3
  * @since   1.0.0
  */
 class TimeAgoMessages
