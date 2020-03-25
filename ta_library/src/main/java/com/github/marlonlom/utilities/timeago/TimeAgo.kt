@@ -17,6 +17,9 @@
 
 package com.github.marlonlom.utilities.timeago
 
+import kotlin.math.abs
+import kotlin.math.roundToLong
+
 /**
  * The Class **TimeAgo**. Performs date time parsing into a text with 'time ago' syntax.
  * <br></br>
@@ -56,7 +59,7 @@ private constructor() {
      * @version 4.0.3
      * @since 2.0.0
      */
-    private enum class Periods(
+    enum class Periods(
             /**
              * The property key.
              */
@@ -78,52 +81,52 @@ private constructor() {
         }),
         XMINUTES_PAST("ml.timeago.xminutes.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
-                return distance >= 2 && distance <= 44
+                return distance in 2..44
             }
         }),
         ABOUTANHOUR_PAST("ml.timeago.aboutanhour.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
-                return distance >= 45 && distance <= 89
+                return distance in 45..89
             }
         }),
         XHOURS_PAST("ml.timeago.xhours.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
-                return distance >= 90 && distance <= 1439
+                return distance in 90..1439
             }
         }),
         ONEDAY_PAST("ml.timeago.oneday.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
-                return distance >= 1440 && distance <= 2519
+                return distance in 1440..2519
             }
         }),
         XDAYS_PAST("ml.timeago.xdays.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
-                return distance >= 2520 && distance <= 43199
+                return distance in 2520..43199
             }
         }),
         ABOUTAMONTH_PAST("ml.timeago.aboutamonth.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
-                return distance >= 43200 && distance <= 86399
+                return distance in 43200..86399
             }
         }),
         XMONTHS_PAST("ml.timeago.xmonths.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
-                return distance >= 86400 && distance <= 525599
+                return distance in 86400..525599
             }
         }),
         ABOUTAYEAR_PAST("ml.timeago.aboutayear.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
-                return distance >= 525600 && distance <= 655199
+                return distance in 525600..655199
             }
         }),
         OVERAYEAR_PAST("ml.timeago.overayear.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
-                return distance >= 655200 && distance <= 914399
+                return distance in 655200..914399
             }
         }),
         ALMOSTTWOYEARS_PAST("ml.timeago.almosttwoyears.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
-                return distance >= 914400 && distance <= 1051199
+                return distance in 914400..1051199
             }
         }),
         XYEARS_PAST("ml.timeago.xyears.past", object : DistancePredicate {
@@ -188,7 +191,7 @@ private constructor() {
         }),
         XYEARS_FUTURE("ml.timeago.xyears.future", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
-                return Math.round((distance / 525600).toFloat()) < -1
+                return (distance / 525600).toFloat().roundToLong() < -1
             }
         });
 
@@ -202,7 +205,7 @@ private constructor() {
              * @return the periods
              */
             fun findByDistanceMinutes(distanceMinutes: Long): Periods? {
-                val values = Periods.values()
+                val values = values()
                 for (item in values) {
                     val successful = item.predicate
                             .validateDistanceMinutes(distanceMinutes)
@@ -266,56 +269,56 @@ private constructor() {
             if (foundTimePeriod != null) {
                 val periodKey = foundTimePeriod.propertyKey
                 when (foundTimePeriod) {
-                    TimeAgo.Periods.XMINUTES_PAST -> timeAgo.append(resources.getPropertyValue(periodKey, dim))
-                    TimeAgo.Periods.XHOURS_PAST -> {
-                        val hours = Math.round((dim / 60).toFloat())
+                    Periods.XMINUTES_PAST -> timeAgo.append(resources.getPropertyValue(periodKey, dim))
+                    Periods.XHOURS_PAST -> {
+                        val hours = (dim / 60).toFloat().roundToLong()
                         val xHoursText = handlePeriodKeyAsPlural(resources,
-                                "ml.timeago.aboutanhour.past", periodKey, hours)
+                                "ml.timeago.aboutanhour.past", periodKey, hours.toInt())
                         timeAgo.append(xHoursText)
                     }
-                    TimeAgo.Periods.XDAYS_PAST -> {
-                        val days = Math.round((dim / 1440).toFloat())
+                    Periods.XDAYS_PAST -> {
+                        val days = (dim / 1440).toFloat().roundToLong()
                         val xDaysText = handlePeriodKeyAsPlural(resources,
-                                "ml.timeago.oneday.past", periodKey, days)
+                                "ml.timeago.oneday.past", periodKey, days.toInt())
                         timeAgo.append(xDaysText)
                     }
-                    TimeAgo.Periods.XMONTHS_PAST -> {
-                        val months = Math.round((dim / 43200).toFloat())
+                    Periods.XMONTHS_PAST -> {
+                        val months = (dim / 43200).toFloat().roundToLong()
                         val xMonthsText = handlePeriodKeyAsPlural(resources,
-                                "ml.timeago.aboutamonth.past", periodKey, months)
+                                "ml.timeago.aboutamonth.past", periodKey, months.toInt())
                         timeAgo.append(xMonthsText)
                     }
-                    TimeAgo.Periods.XYEARS_PAST -> {
-                        val years = Math.round((dim / 525600).toFloat())
+                    Periods.XYEARS_PAST -> {
+                        val years = (dim / 525600).toFloat().roundToLong()
                         timeAgo.append(resources.getPropertyValue(periodKey, years))
                     }
-                    TimeAgo.Periods.XMINUTES_FUTURE -> timeAgo.append(resources.getPropertyValue(periodKey, Math.abs(dim.toFloat())))
-                    TimeAgo.Periods.XHOURS_FUTURE -> {
-                        val hours1 = Math.abs(Math.round(dim / 60f))
-                        val yHoursText = if (hours1 == 24)
+                    Periods.XMINUTES_FUTURE -> timeAgo.append(resources.getPropertyValue(periodKey, abs(dim.toFloat())))
+                    Periods.XHOURS_FUTURE -> {
+                        val hours1 = abs((dim / 60f).roundToLong())
+                        val yHoursText = if (hours1.toInt() == 24)
                             resources.getPropertyValue("ml.timeago.oneday.future")
                         else
                             handlePeriodKeyAsPlural(resources, "ml.timeago.aboutanhour.future",
-                                    periodKey, hours1)
+                                    periodKey, hours1.toInt())
                         timeAgo.append(yHoursText)
                     }
-                    TimeAgo.Periods.XDAYS_FUTURE -> {
-                        val days1 = Math.abs(Math.round(dim / 1440f))
+                    Periods.XDAYS_FUTURE -> {
+                        val days1 = abs((dim / 1440f).roundToLong())
                         val yDaysText = handlePeriodKeyAsPlural(resources,
-                                "ml.timeago.oneday.future", periodKey, days1)
+                                "ml.timeago.oneday.future", periodKey, days1.toInt())
                         timeAgo.append(yDaysText)
                     }
-                    TimeAgo.Periods.XMONTHS_FUTURE -> {
-                        val months1 = Math.abs(Math.round(dim / 43200f))
-                        val yMonthsText = if (months1 == 12)
+                    Periods.XMONTHS_FUTURE -> {
+                        val months1 = abs((dim / 43200f).roundToLong())
+                        val yMonthsText = if (months1.toInt() == 12)
                             resources.getPropertyValue("ml.timeago.aboutayear.future")
                         else
                             handlePeriodKeyAsPlural(resources,
-                                    "ml.timeago.aboutamonth.future", periodKey, months1)
+                                    "ml.timeago.aboutamonth.future", periodKey, months1.toInt())
                         timeAgo.append(yMonthsText)
                     }
-                    TimeAgo.Periods.XYEARS_FUTURE -> {
-                        val years1 = Math.abs(Math.round(dim / 525600f))
+                    Periods.XYEARS_FUTURE -> {
+                        val years1 = abs((dim / 525600f).roundToLong())
                         timeAgo.append(resources.getPropertyValue(periodKey, years1))
                     }
                     else -> timeAgo.append(resources.getPropertyValue(periodKey))
@@ -345,7 +348,7 @@ private constructor() {
          */
         private fun getTimeDistanceInMinutes(time: Long): Long {
             val timeDistance = System.currentTimeMillis() - time
-            return Math.round((timeDistance / 1000 / 60).toFloat()).toLong()
+            return (timeDistance / 1000 / 60).toFloat().roundToLong()
         }
     }
 }

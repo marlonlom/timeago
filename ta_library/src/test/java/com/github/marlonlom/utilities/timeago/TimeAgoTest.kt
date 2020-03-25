@@ -17,6 +17,7 @@
 
 package com.github.marlonlom.utilities.timeago
 
+import com.github.marlonlom.utilities.timeago.TimeAgo.Periods
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -37,6 +38,7 @@ class TimeAgoTest {
      * The time ago messages.
      */
     private lateinit var mTimeAgoMessages: TimeAgoMessages
+
     /**
      * The Local bundle.
      */
@@ -58,11 +60,9 @@ class TimeAgoTest {
      */
     @Before
     fun setupMessagesResource() {
-        val languageRef = randomLanguageRef
-        val languageTag = Locale.forLanguageTag(languageRef)
-        val bundleName = "com.github.marlonlom.utilities.timeago.messages"
+        val languageTag = Locale.forLanguageTag(randomLanguageRef)
         mTimeAgoMessages = TimeAgoMessages.Builder().withLocale(languageTag).build()
-        localBundle = ResourceBundle.getBundle(bundleName, languageTag)
+        localBundle = ResourceBundle.getBundle(BUNDLE_NAME, languageTag)
     }
 
     /**
@@ -74,9 +74,7 @@ class TimeAgoTest {
      */
     private fun getExpectedMessage(key: String, vararg values: Int): String {
         val bundledMessage = localBundle!!.getString(key)
-        return if (values.isNotEmpty()) {
-            bundledMessage.replace("{0}", values[0].toString())
-        } else bundledMessage
+        return if (values.isNotEmpty()) bundledMessage.replace("{0}", values[0].toString()) else bundledMessage
     }
 
     /**
@@ -88,7 +86,7 @@ class TimeAgoTest {
         calendar.add(Calendar.MONTH, -10)
         calendar.add(Calendar.YEAR, -1)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.almosttwoyears.past")
+        val expected = getExpectedMessage(Periods.ALMOSTTWOYEARS_PAST.propertyKey)
         Assert.assertEquals(expected, results)
     }
 
@@ -101,7 +99,7 @@ class TimeAgoTest {
         calendar.add(Calendar.MONTH, -4)
         calendar.add(Calendar.YEAR, -1)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.overayear.past")
+        val expected = getExpectedMessage(Periods.OVERAYEAR_PAST.propertyKey)
         Assert.assertEquals(expected, results)
     }
 
@@ -113,7 +111,7 @@ class TimeAgoTest {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.MONTH, -12)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.aboutayear.past")
+        val expected = getExpectedMessage(Periods.ABOUTAYEAR_PAST.propertyKey)
         Assert.assertEquals(expected, results)
     }
 
@@ -125,7 +123,7 @@ class TimeAgoTest {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.MONTH, -6)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.xmonths.past", 6)
+        val expected = getExpectedMessage(Periods.XMONTHS_PAST.propertyKey, 6)
         Assert.assertEquals(expected, results)
     }
 
@@ -137,7 +135,7 @@ class TimeAgoTest {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.DAY_OF_MONTH, -30)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.aboutamonth.past")
+        val expected = getExpectedMessage(Periods.ABOUTAMONTH_PAST.propertyKey)
         Assert.assertEquals(expected, results)
     }
 
@@ -149,7 +147,7 @@ class TimeAgoTest {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.DAY_OF_MONTH, -10)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.xdays.past", 10)
+        val expected = getExpectedMessage(Periods.XDAYS_PAST.propertyKey, 10)
         Assert.assertEquals(expected, results)
     }
 
@@ -161,7 +159,7 @@ class TimeAgoTest {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.DAY_OF_MONTH, -1)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.oneday.past")
+        val expected = getExpectedMessage(Periods.ONEDAY_PAST.propertyKey)
         Assert.assertEquals(expected, results)
     }
 
@@ -173,7 +171,7 @@ class TimeAgoTest {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.HOUR, -3)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.xhours.past", 3)
+        val expected = getExpectedMessage(Periods.XHOURS_PAST.propertyKey, 3)
         Assert.assertEquals(expected, results)
     }
 
@@ -185,7 +183,7 @@ class TimeAgoTest {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.MINUTE, -51)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.aboutanhour.past")
+        val expected = getExpectedMessage(Periods.ABOUTANHOUR_PAST.propertyKey)
         Assert.assertEquals(expected, results)
     }
 
@@ -197,7 +195,7 @@ class TimeAgoTest {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.MINUTE, -9)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.xminutes.past", 9)
+        val expected = getExpectedMessage(Periods.XMINUTES_PAST.propertyKey, 9)
         Assert.assertEquals(expected, results)
     }
 
@@ -209,7 +207,7 @@ class TimeAgoTest {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.MINUTE, -1)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.oneminute.past")
+        val expected = getExpectedMessage(Periods.ONEMINUTE_PAST.propertyKey)
         Assert.assertEquals(expected, results)
     }
 
@@ -222,7 +220,7 @@ class TimeAgoTest {
         calendar.add(Calendar.MONTH, 10)
         calendar.add(Calendar.YEAR, 1)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.almosttwoyears.future")
+        val expected = getExpectedMessage(Periods.ALMOSTTWOYEARS_FUTURE.propertyKey)
         Assert.assertEquals(expected, results)
     }
 
@@ -235,7 +233,7 @@ class TimeAgoTest {
         calendar.add(Calendar.MONTH, 4)
         calendar.add(Calendar.YEAR, 1)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.overayear.future")
+        val expected = getExpectedMessage(Periods.OVERAYEAR_FUTURE.propertyKey)
         Assert.assertEquals(expected, results)
     }
 
@@ -247,7 +245,7 @@ class TimeAgoTest {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.MONTH, 12)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.aboutayear.future")
+        val expected = getExpectedMessage(Periods.ABOUTAYEAR_FUTURE.propertyKey)
         Assert.assertEquals(expected, results)
     }
 
@@ -259,7 +257,7 @@ class TimeAgoTest {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.MONTH, 6)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.xmonths.future", 6)
+        val expected = getExpectedMessage(Periods.XMONTHS_FUTURE.propertyKey, 6)
         Assert.assertEquals(expected, results)
     }
 
@@ -273,7 +271,7 @@ class TimeAgoTest {
             add(Calendar.HOUR, 15)
         }
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.aboutamonth.future")
+        val expected = getExpectedMessage(Periods.ABOUTAMONTH_FUTURE.propertyKey)
         Assert.assertEquals(expected, results)
     }
 
@@ -285,7 +283,7 @@ class TimeAgoTest {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.DAY_OF_MONTH, 10)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.xdays.future", 10)
+        val expected = getExpectedMessage(Periods.XDAYS_FUTURE.propertyKey, 10)
         Assert.assertEquals(expected, results)
     }
 
@@ -297,7 +295,7 @@ class TimeAgoTest {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.DAY_OF_MONTH, 1)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.oneday.future")
+        val expected = getExpectedMessage(Periods.ONEDAY_FUTURE.propertyKey)
         Assert.assertEquals(expected, results)
     }
 
@@ -309,7 +307,7 @@ class TimeAgoTest {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.HOUR, 5)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.xhours.future", 5)
+        val expected = getExpectedMessage(Periods.XHOURS_FUTURE.propertyKey, 5)
         Assert.assertEquals(expected, results)
     }
 
@@ -321,7 +319,7 @@ class TimeAgoTest {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.MINUTE, 51)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.aboutanhour.future")
+        val expected = getExpectedMessage(Periods.ABOUTANHOUR_FUTURE.propertyKey)
         Assert.assertEquals(expected, results)
     }
 
@@ -333,7 +331,7 @@ class TimeAgoTest {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.MINUTE, 9)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.xminutes.future", 9)
+        val expected = getExpectedMessage(Periods.XMINUTES_FUTURE.propertyKey, 9)
         Assert.assertEquals(expected, results)
     }
 
@@ -345,7 +343,7 @@ class TimeAgoTest {
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.SECOND, 61)
         val results = TimeAgo.using(calendar.timeInMillis, mTimeAgoMessages)
-        val expected = getExpectedMessage("ml.timeago.oneminute.future")
+        val expected = getExpectedMessage(Periods.ONEMINUTE_FUTURE.propertyKey)
         Assert.assertEquals(expected, results)
     }
 
@@ -355,5 +353,11 @@ class TimeAgoTest {
          * The available languages array.
          */
         private val LANGUAGES_ARRAY = "ar;cs;da;de;en;es;eu;fa;fr;in;it;nl;pt;tr".split(";".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+
+        /**
+         * Constant for bundle name
+         */
+        const val BUNDLE_NAME = "com.github.marlonlom.utilities.timeago.messages"
+
     }
 }
