@@ -71,125 +71,125 @@ private constructor() {
 
         NOW("ml.timeago.now", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
-                return distance == 0L
+                return distance in 0L..(0.99).toLong()
             }
         }),
-        ONEMINUTE_PAST("ml.timeago.oneminute.past", object : DistancePredicate {
+        ONE_MINUTE_PAST("ml.timeago.oneminute.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance == 1L
             }
         }),
-        XMINUTES_PAST("ml.timeago.xminutes.past", object : DistancePredicate {
+        X_MINUTES_PAST("ml.timeago.xminutes.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance in 2..44
             }
         }),
-        ABOUTANHOUR_PAST("ml.timeago.aboutanhour.past", object : DistancePredicate {
+        ABOUT_AN_HOUR_PAST("ml.timeago.aboutanhour.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance in 45..89
             }
         }),
-        XHOURS_PAST("ml.timeago.xhours.past", object : DistancePredicate {
+        X_HOURS_PAST("ml.timeago.xhours.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance in 90..1439
             }
         }),
-        ONEDAY_PAST("ml.timeago.oneday.past", object : DistancePredicate {
+        ONE_DAY_PAST("ml.timeago.oneday.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance in 1440..2519
             }
         }),
-        XDAYS_PAST("ml.timeago.xdays.past", object : DistancePredicate {
+        X_DAYS_PAST("ml.timeago.xdays.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance in 2520..43199
             }
         }),
-        ABOUTAMONTH_PAST("ml.timeago.aboutamonth.past", object : DistancePredicate {
+        ABOUT_A_MONTH_PAST("ml.timeago.aboutamonth.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance in 43200..86399
             }
         }),
-        XMONTHS_PAST("ml.timeago.xmonths.past", object : DistancePredicate {
+        X_MONTHS_PAST("ml.timeago.xmonths.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance in 86400..525599
             }
         }),
-        ABOUTAYEAR_PAST("ml.timeago.aboutayear.past", object : DistancePredicate {
+        ABOUT_A_YEAR_PAST("ml.timeago.aboutayear.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance in 525600..655199
             }
         }),
-        OVERAYEAR_PAST("ml.timeago.overayear.past", object : DistancePredicate {
+        OVER_A_YEAR_PAST("ml.timeago.overayear.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance in 655200..914399
             }
         }),
-        ALMOSTTWOYEARS_PAST("ml.timeago.almosttwoyears.past", object : DistancePredicate {
+        ALMOST_TWO_YEARS_PAST("ml.timeago.almosttwoyears.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance in 914400..1051199
             }
         }),
-        XYEARS_PAST("ml.timeago.xyears.past", object : DistancePredicate {
+        X_YEARS_PAST("ml.timeago.xyears.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
-                return Math.round((distance / 525600).toFloat()) > 1
+                return (distance / 525600).toFloat().roundToLong() > 1
             }
         }),
-        ONEMINUTE_FUTURE("ml.timeago.oneminute.future", object : DistancePredicate {
+        ONE_MINUTE_FUTURE("ml.timeago.oneminute.future", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance.toInt() == -1
             }
         }),
-        XMINUTES_FUTURE("ml.timeago.xminutes.future", object : DistancePredicate {
+        X_MINUTES_FUTURE("ml.timeago.xminutes.future", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance <= -2 && distance >= -44
             }
         }),
-        ABOUTANHOUR_FUTURE("ml.timeago.aboutanhour.future", object : DistancePredicate {
+        ABOUT_AN_HOUR_FUTURE("ml.timeago.aboutanhour.future", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance <= -45 && distance >= -89
             }
         }),
-        XHOURS_FUTURE("ml.timeago.xhours.future", object : DistancePredicate {
+        X_HOURS_FUTURE("ml.timeago.xhours.future", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance <= -90 && distance >= -1439
             }
         }),
-        ONEDAY_FUTURE("ml.timeago.oneday.future", object : DistancePredicate {
+        ONE_DAY_FUTURE("ml.timeago.oneday.future", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance <= -1440 && distance >= -2519
             }
         }),
-        XDAYS_FUTURE("ml.timeago.xdays.future", object : DistancePredicate {
+        X_DAYS_FUTURE("ml.timeago.xdays.future", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance <= -2520 && distance >= -43199
             }
         }),
-        ABOUTAMONTH_FUTURE("ml.timeago.aboutamonth.future", object : DistancePredicate {
+        ABOUT_A_MONTH_FUTURE("ml.timeago.aboutamonth.future", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance <= -43200 && distance >= -86399
             }
         }),
-        XMONTHS_FUTURE("ml.timeago.xmonths.future", object : DistancePredicate {
+        X_MONTHS_FUTURE("ml.timeago.xmonths.future", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance <= -86400 && distance >= -525599
             }
         }),
-        ABOUTAYEAR_FUTURE("ml.timeago.aboutayear.future", object : DistancePredicate {
+        ABOUT_A_YEAR_FUTURE("ml.timeago.aboutayear.future", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance <= -525600 && distance >= -655199
             }
         }),
-        OVERAYEAR_FUTURE("ml.timeago.overayear.future", object : DistancePredicate {
+        OVER_A_YEAR_FUTURE("ml.timeago.overayear.future", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance <= -655200 && distance >= -914399
             }
         }),
-        ALMOSTTWOYEARS_FUTURE("ml.timeago.almosttwoyears.future", object : DistancePredicate {
+        ALMOST_TWO_YEARS_FUTURE("ml.timeago.almosttwoyears.future", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance <= -914400 && distance >= -1051199
             }
         }),
-        XYEARS_FUTURE("ml.timeago.xyears.future", object : DistancePredicate {
+        X_YEARS_FUTURE("ml.timeago.xyears.future", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return (distance / 525600).toFloat().roundToLong() < -1
             }
@@ -269,31 +269,31 @@ private constructor() {
             if (foundTimePeriod != null) {
                 val periodKey = foundTimePeriod.propertyKey
                 when (foundTimePeriod) {
-                    Periods.XMINUTES_PAST -> timeAgo.append(resources.getPropertyValue(periodKey, dim))
-                    Periods.XHOURS_PAST -> {
+                    Periods.X_MINUTES_PAST -> timeAgo.append(resources.getPropertyValue(periodKey, dim))
+                    Periods.X_HOURS_PAST -> {
                         val hours = (dim / 60).toFloat().roundToLong()
                         val xHoursText = handlePeriodKeyAsPlural(resources,
                                 "ml.timeago.aboutanhour.past", periodKey, hours.toInt())
                         timeAgo.append(xHoursText)
                     }
-                    Periods.XDAYS_PAST -> {
+                    Periods.X_DAYS_PAST -> {
                         val days = (dim / 1440).toFloat().roundToLong()
                         val xDaysText = handlePeriodKeyAsPlural(resources,
                                 "ml.timeago.oneday.past", periodKey, days.toInt())
                         timeAgo.append(xDaysText)
                     }
-                    Periods.XMONTHS_PAST -> {
+                    Periods.X_MONTHS_PAST -> {
                         val months = (dim / 43200).toFloat().roundToLong()
                         val xMonthsText = handlePeriodKeyAsPlural(resources,
                                 "ml.timeago.aboutamonth.past", periodKey, months.toInt())
                         timeAgo.append(xMonthsText)
                     }
-                    Periods.XYEARS_PAST -> {
+                    Periods.X_YEARS_PAST -> {
                         val years = (dim / 525600).toFloat().roundToLong()
                         timeAgo.append(resources.getPropertyValue(periodKey, years))
                     }
-                    Periods.XMINUTES_FUTURE -> timeAgo.append(resources.getPropertyValue(periodKey, abs(dim.toFloat())))
-                    Periods.XHOURS_FUTURE -> {
+                    Periods.X_MINUTES_FUTURE -> timeAgo.append(resources.getPropertyValue(periodKey, abs(dim.toFloat())))
+                    Periods.X_HOURS_FUTURE -> {
                         val hours1 = abs((dim / 60f).roundToLong())
                         val yHoursText = if (hours1.toInt() == 24)
                             resources.getPropertyValue("ml.timeago.oneday.future")
@@ -302,13 +302,13 @@ private constructor() {
                                     periodKey, hours1.toInt())
                         timeAgo.append(yHoursText)
                     }
-                    Periods.XDAYS_FUTURE -> {
+                    Periods.X_DAYS_FUTURE -> {
                         val days1 = abs((dim / 1440f).roundToLong())
                         val yDaysText = handlePeriodKeyAsPlural(resources,
                                 "ml.timeago.oneday.future", periodKey, days1.toInt())
                         timeAgo.append(yDaysText)
                     }
-                    Periods.XMONTHS_FUTURE -> {
+                    Periods.X_MONTHS_FUTURE -> {
                         val months1 = abs((dim / 43200f).roundToLong())
                         val yMonthsText = if (months1.toInt() == 12)
                             resources.getPropertyValue("ml.timeago.aboutayear.future")
@@ -317,7 +317,7 @@ private constructor() {
                                     "ml.timeago.aboutamonth.future", periodKey, months1.toInt())
                         timeAgo.append(yMonthsText)
                     }
-                    Periods.XYEARS_FUTURE -> {
+                    Periods.X_YEARS_FUTURE -> {
                         val years1 = abs((dim / 525600f).roundToLong())
                         timeAgo.append(resources.getPropertyValue(periodKey, years1))
                     }
