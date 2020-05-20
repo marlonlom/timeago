@@ -12,3 +12,6 @@ android:
 
 script:
   - "./gradlew -PdisablePreDex build"
+
+notifications:
+  slack: malm-dev:rSWGtyhfdbakZfSVGNi182o5
