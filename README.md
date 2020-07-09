@@ -21,7 +21,7 @@ Simple java library for displaying dates as relative time ago language.
 Gradle:
 
 ```
-compile 'com.github.marlonlom:timeago:$latestVersion'
+implementation 'com.github.marlonlom:timeago:$latestVersion'
 ```
 
 Maven:
@@ -37,7 +37,7 @@ Maven:
 ### Use it in your code:
 
 ```java
-String text = TimeAgo.using(timeInMillis);
+val text = TimeAgo.using(timeInMillis);
 ```
 
 Where _timeInMillis_, based on current date and time, is defined like 
@@ -46,7 +46,7 @@ Where _timeInMillis_, based on current date and time, is defined like
 /* You can use java.util.Calendar.getInstance().getTimeInMillis()*/
 /* Also, with java 8, java.time.Instant.now().toEpochMilli() */
 
-long timeInMillis = System.currentTimeMillis();
+val timeInMillis = System.currentTimeMillis();
 ```
 
 ### With Specific Locale (by language tag):
@@ -54,8 +54,8 @@ long timeInMillis = System.currentTimeMillis();
 For specific language usage, use _TimeAgoMessages_:
 
 ```java
-Locale LocaleBylanguageTag = Locale.forLanguageTag("es"); 
-TimeAgoMessages messages = new TimeAgoMessages.Builder().withLocale(LocaleBylanguageTag).build();
+val locale = Locale.forLanguageTag("es"); 
+TimeAgoMessages messages = new TimeAgoMessages.Builder().withLocale(locale).build();
 
 String text = TimeAgo.using(timeInMillis, messages);
 ```
