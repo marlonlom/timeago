@@ -101,12 +101,17 @@ private constructor() {
         }),
         X_DAYS_PAST("ml.timeago.xdays.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
-                return distance in 2520..11519
+                return distance in 2520..10079
             }
         }),
         ONE_WEEK_PAST("ml.timeago.oneweek.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
-                return distance in 11520..20159
+                return distance in 10080..20159
+            }
+        }),
+        X_WEEKS_PAST("ml.timeago.xweeks.past", object : DistancePredicate {
+            override fun validateDistanceMinutes(distance: Long): Boolean {
+                return distance in 20160..43199
             }
         }),
         ABOUT_A_MONTH_PAST("ml.timeago.aboutamonth.past", object : DistancePredicate {
@@ -286,6 +291,12 @@ private constructor() {
                         val xDaysText = handlePeriodKeyAsPlural(resources,
                                 "ml.timeago.oneday.past", periodKey, days.toInt())
                         timeAgo.append(xDaysText)
+                    }
+                    Periods.X_WEEKS_PAST -> {
+                        val weeks = (dim / 10080).toFloat().roundToLong()
+                        val xWeeksText = handlePeriodKeyAsPlural(resources,
+                                "ml.timeago.oneweek.past", periodKey, weeks.toInt())
+                        timeAgo.append(xWeeksText)
                     }
                     Periods.X_MONTHS_PAST -> {
                         val months = (dim / 43200).toFloat().roundToLong()
