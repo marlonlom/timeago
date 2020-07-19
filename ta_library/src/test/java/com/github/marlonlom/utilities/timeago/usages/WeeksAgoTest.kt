@@ -75,7 +75,7 @@ class WeeksAgoTest {
     fun shouldShowPastDateTimeWithAWeek() {
         val calendar = getCalendarInstance().apply { add(DAY_OF_MONTH, -8) }
         val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-        val expected = getExpectedMessage(localBundle!!, ONE_WEEK_PAST.propertyKey, 8)
+        val expected = getExpectedMessage(localBundle!!, ONE_WEEK_PAST.propertyKey)
         assertEquals(expected, results)
     }
 
@@ -86,7 +86,7 @@ class WeeksAgoTest {
     fun shouldShowFutureDateTimeWithAWeek() {
         val calendar = getCalendarInstance().apply { add(DAY_OF_MONTH, 8) }
         val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-        val expected = getExpectedMessage(localBundle!!, ONE_WEEK_FUTURE.propertyKey, 8)
+        val expected = getExpectedMessage(localBundle!!, ONE_WEEK_FUTURE.propertyKey)
         assertEquals(expected, results)
     }
 
@@ -102,6 +102,17 @@ class WeeksAgoTest {
     }
 
     /**
+     * Should show future date time with two weeks.
+     */
+    @Test
+    fun shouldShowFutureDateTimeWithTwoWeeks() {
+        val calendar = getCalendarInstance().apply { add(DAY_OF_MONTH, 16) }
+        val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
+        val expected = getExpectedMessage(localBundle!!, X_WEEKS_FUTURE.propertyKey, 2)
+        assertEquals(expected, results)
+    }
+
+    /**
      * Should show past date time with three weeks.
      */
     @Test
@@ -112,4 +123,14 @@ class WeeksAgoTest {
         assertEquals(expected, results)
     }
 
+    /**
+     * Should show future date time with three weeks.
+     */
+    @Test
+    fun shouldShowFutureDateTimeWithThreeWeeks() {
+        val calendar = getCalendarInstance().apply { add(DAY_OF_MONTH, 23) }
+        val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
+        val expected = getExpectedMessage(localBundle!!, X_WEEKS_FUTURE.propertyKey, 3)
+        assertEquals(expected, results)
+    }
 }
