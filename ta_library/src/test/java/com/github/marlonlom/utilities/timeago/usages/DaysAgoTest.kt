@@ -84,9 +84,9 @@ class DaysAgoTest {
      */
     @Test
     fun shouldShowPastDateTimeWithSixDays() {
-        val calendar = newCalendarInstance().apply { add(DAY_OF_MONTH, -7) }
+        val calendar = newCalendarInstance().apply { add(DAY_OF_MONTH, -6) }
         val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-        val expected = getExpectedMessage(localBundle!!, X_DAYS_PAST.propertyKey, 7)
+        val expected = getExpectedMessage(localBundle!!, X_DAYS_PAST.propertyKey, 6)
         assertEquals(expected, results)
     }
 
