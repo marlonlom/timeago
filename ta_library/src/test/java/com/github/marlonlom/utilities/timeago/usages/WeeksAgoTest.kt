@@ -22,10 +22,9 @@ import com.github.marlonlom.utilities.timeago.DataBuilder.newLocalBundle
 import com.github.marlonlom.utilities.timeago.DataBuilder.newMessagesResource
 import com.github.marlonlom.utilities.timeago.DataBuilder.randomLanguageRef
 import com.github.marlonlom.utilities.timeago.DataBuilder.useTimeAgo
-import com.github.marlonlom.utilities.timeago.TimeAgo.Periods.ONE_WEEK_PAST
-import com.github.marlonlom.utilities.timeago.TimeAgo.Periods.X_WEEKS_PAST
+import com.github.marlonlom.utilities.timeago.TimeAgo.Periods.*
 import com.github.marlonlom.utilities.timeago.TimeAgoMessages
-import org.junit.Assert
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -77,7 +76,18 @@ class WeeksAgoTest {
         val calendar = getCalendarInstance().apply { add(DAY_OF_MONTH, -8) }
         val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
         val expected = getExpectedMessage(localBundle!!, ONE_WEEK_PAST.propertyKey, 8)
-        Assert.assertEquals(expected, results)
+        assertEquals(expected, results)
+    }
+
+    /**
+     * Should show future date time with a week.
+     */
+    @Test
+    fun shouldShowFutureDateTimeWithAWeek() {
+        val calendar = getCalendarInstance().apply { add(DAY_OF_MONTH, 8) }
+        val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
+        val expected = getExpectedMessage(localBundle!!, ONE_WEEK_FUTURE.propertyKey, 8)
+        assertEquals(expected, results)
     }
 
     /**
@@ -88,7 +98,7 @@ class WeeksAgoTest {
         val calendar = getCalendarInstance().apply { add(DAY_OF_MONTH, -16) }
         val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
         val expected = getExpectedMessage(localBundle!!, X_WEEKS_PAST.propertyKey, 2)
-        Assert.assertEquals(expected, results)
+        assertEquals(expected, results)
     }
 
     /**
@@ -99,7 +109,7 @@ class WeeksAgoTest {
         val calendar = getCalendarInstance().apply { add(DAY_OF_MONTH, -23) }
         val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
         val expected = getExpectedMessage(localBundle!!, X_WEEKS_PAST.propertyKey, 3)
-        Assert.assertEquals(expected, results)
+        assertEquals(expected, results)
     }
 
 }
