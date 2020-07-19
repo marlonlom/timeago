@@ -35,8 +35,8 @@ import java.util.*
  * 2: Using a specific Locale by language tag:
  *
  * <pre>
- * Locale LocaleBylanguageTag = Locale.forLanguageTag("es");
- * TimeAgoMessages resources = new TimeAgoMessages.Builder().withLocale(LocaleBylanguageTag).build();
+ * Locale localeByLanguageTag = Locale.forLanguageTag("es");
+ * TimeAgoMessages resources = new TimeAgoMessages.Builder().withLocale(localeByLanguageTag).build();
  * </pre>
  *
  *
@@ -45,7 +45,7 @@ import java.util.*
  *
  *
  * @author marlonlom
- * @version 4.0.3
+ * @version 4.1.0
  * @since   1.0.0
  */
 class TimeAgoMessages
@@ -54,9 +54,7 @@ class TimeAgoMessages
  */
 private constructor() {
     /**
-     * Sets the resource bundle.
-     *
-     * @param bundle the new resource bundle
+     * The resource bundle for holding the language messages.
      */
     private var bundle: ResourceBundle? = null
 
@@ -92,17 +90,7 @@ private constructor() {
         /**
          * The inner bundle.
          */
-        /**
-         * Gets the inner bundle.
-         *
-         * @return the inner bundle
-         */
-        /**
-         * Sets the inner bundle.
-         *
-         * @param bundle the new inner bundle
-         */
-        var innerBundle: ResourceBundle? = null
+        private var innerBundle: ResourceBundle? = null
 
         /**
          * Builds the TimeAgoMessages instance.
@@ -121,7 +109,7 @@ private constructor() {
          * @return the builder
          */
         fun defaultLocale(): Builder {
-            this.innerBundle = ResourceBundle.getBundle(TimeAgoMessages.MESSAGES)
+            this.innerBundle = ResourceBundle.getBundle(MESSAGES)
             return this
         }
 
@@ -132,7 +120,7 @@ private constructor() {
          * @return the builder
          */
         fun withLocale(locale: Locale): Builder {
-            this.innerBundle = ResourceBundle.getBundle(TimeAgoMessages.MESSAGES, locale)
+            this.innerBundle = ResourceBundle.getBundle(MESSAGES, locale)
             return this
         }
     }
@@ -142,6 +130,6 @@ private constructor() {
         /**
          * The property path for MESSAGES.
          */
-        private val MESSAGES = "com.github.marlonlom.utilities.timeago.messages"
+        private const val MESSAGES = "com.github.marlonlom.utilities.timeago.messages"
     }
 }
