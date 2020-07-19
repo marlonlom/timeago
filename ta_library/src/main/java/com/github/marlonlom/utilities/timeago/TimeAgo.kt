@@ -179,6 +179,11 @@ private constructor() {
                 return distance <= -10080 && distance >= -20159
             }
         }),
+        X_WEEKS_FUTURE("ml.timeago.xweeks.future", object : DistancePredicate {
+            override fun validateDistanceMinutes(distance: Long): Boolean {
+                return distance <= -20160 && distance >= -43199
+            }
+        }),
         ABOUT_A_MONTH_FUTURE("ml.timeago.aboutamonth.future", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
                 return distance <= -43200 && distance >= -86399
@@ -328,6 +333,12 @@ private constructor() {
                         val yDaysText = handlePeriodKeyAsPlural(resources,
                                 "ml.timeago.oneday.future", periodKey, days1.toInt())
                         timeAgo.append(yDaysText)
+                    }
+                    Periods.X_WEEKS_FUTURE -> {
+                        val weeks1 = abs((dim / 10080f).roundToLong())
+                        val yWeeksText = handlePeriodKeyAsPlural(resources,
+                                "ml.timeago.oneweek.future", periodKey, weeks1.toInt())
+                        timeAgo.append(yWeeksText)
                     }
                     Periods.X_MONTHS_FUTURE -> {
                         val months1 = abs((dim / 43200f).roundToLong())
