@@ -7,7 +7,7 @@ object DataBuilder {
     /**
      * The available languages array.
      */
-    private val LANGUAGES_ARRAY = "ar;cs;da;de;en;es;eu;fa;fr;in;it;nl;pt;tr".split(";".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+    private val LANGUAGES_ARRAY = "ar;cs;da;de;en;es;eu;fa;fr;in;it;nl;pt;tr;zh;zh_tw".split(";".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
 
     /**
      * Constant for bundle name
