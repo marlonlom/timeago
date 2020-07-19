@@ -17,6 +17,7 @@ import org.junit.runners.Suite
         HoursAgoTest::class,
         MinutesAgoTest::class,
         DaysAgoTest::class,
+        WeeksAgoTest::class,
         MonthsAgoTest::class,
         YearsAgoTest::class
 )
