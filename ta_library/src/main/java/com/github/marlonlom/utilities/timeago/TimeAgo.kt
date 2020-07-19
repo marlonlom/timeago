@@ -36,12 +36,12 @@ import kotlin.math.roundToLong
  * <br></br>
  * <pre>
  * Locale LocaleByLanguageTag = Locale.forLanguageTag("es");
- * TimeAgo.using(new java.util.Date().getTime(), new TimeAgoMessages.Builder().withLocale(LocaleBylanguageTag).build());
+ * TimeAgo.using(new java.util.Date().getTime(), new TimeAgoMessages.Builder().withLocale(LocaleByLanguageTag).build());
  * </pre>
  * <br></br>
  *
  * @author marlonlom
- * @version 4.0.3
+ * @version 4.1.0
  * @see TimeAgoMessages
  *
  * @since 1.0.0
@@ -56,7 +56,7 @@ private constructor() {
      * The enum Periods.
      *
      * @author marlonlom
-     * @version 4.0.3
+     * @version 4.1.0
      * @since 2.0.0
      */
     enum class Periods(
@@ -101,7 +101,12 @@ private constructor() {
         }),
         X_DAYS_PAST("ml.timeago.xdays.past", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
-                return distance in 2520..43199
+                return distance in 2520..11519
+            }
+        }),
+        ONE_WEEK_PAST("ml.timeago.oneweek.past", object : DistancePredicate {
+            override fun validateDistanceMinutes(distance: Long): Boolean {
+                return distance in 11520..20159
             }
         }),
         ABOUT_A_MONTH_PAST("ml.timeago.aboutamonth.past", object : DistancePredicate {
@@ -222,7 +227,7 @@ private constructor() {
      * Interface definition for handling distance validations or periods.
      *
      * @author marlonlom
-     * @version 4.0.3
+     * @version 4.1.0
      * @see Periods
      *
      * @since 1.0.0
