@@ -171,7 +171,12 @@ private constructor() {
         }),
         X_DAYS_FUTURE("ml.timeago.xdays.future", object : DistancePredicate {
             override fun validateDistanceMinutes(distance: Long): Boolean {
-                return distance <= -2520 && distance >= -43199
+                return distance <= -2520 && distance >= -10079
+            }
+        }),
+        ONE_WEEK_FUTURE("ml.timeago.oneweek.future", object : DistancePredicate {
+            override fun validateDistanceMinutes(distance: Long): Boolean {
+                return distance <= -10080 && distance >= -20159
             }
         }),
         ABOUT_A_MONTH_FUTURE("ml.timeago.aboutamonth.future", object : DistancePredicate {
