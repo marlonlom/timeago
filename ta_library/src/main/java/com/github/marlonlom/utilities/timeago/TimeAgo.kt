@@ -291,31 +291,31 @@ private constructor() {
                 when (foundTimePeriod) {
                     Periods.X_MINUTES_PAST -> timeAgo.append(resources.getPropertyValue(periodKey, dim))
                     Periods.X_HOURS_PAST -> {
-                        val hours = (dim / 60).toFloat().roundToLong()
+                        val hours = (dim / 60f).roundToLong()
                         val xHoursText = handlePeriodKeyAsPlural(resources,
                                 "ml.timeago.aboutanhour.past", periodKey, hours.toInt())
                         timeAgo.append(xHoursText)
                     }
                     Periods.X_DAYS_PAST -> {
-                        val days = (dim / 1440).toFloat().roundToLong()
+                        val days = (dim / 1440f).roundToLong()
                         val xDaysText = handlePeriodKeyAsPlural(resources,
                                 "ml.timeago.oneday.past", periodKey, days.toInt())
                         timeAgo.append(xDaysText)
                     }
                     Periods.X_WEEKS_PAST -> {
-                        val weeks = (dim / 10080).toFloat().roundToLong()
+                        val weeks = (dim / 10080f).roundToLong()
                         val xWeeksText = handlePeriodKeyAsPlural(resources,
                                 "ml.timeago.oneweek.past", periodKey, weeks.toInt())
                         timeAgo.append(xWeeksText)
                     }
                     Periods.X_MONTHS_PAST -> {
-                        val months = (dim / 43200).toFloat().roundToLong()
+                        val months = (dim / 43200f).roundToLong()
                         val xMonthsText = handlePeriodKeyAsPlural(resources,
                                 "ml.timeago.aboutamonth.past", periodKey, months.toInt())
                         timeAgo.append(xMonthsText)
                     }
                     Periods.X_YEARS_PAST -> {
-                        val years = (dim / 525600).toFloat().roundToLong()
+                        val years = (dim / 525600f).roundToLong()
                         timeAgo.append(resources.getPropertyValue(periodKey, years))
                     }
                     Periods.X_MINUTES_FUTURE -> timeAgo.append(resources.getPropertyValue(periodKey, abs(dim.toFloat())))
