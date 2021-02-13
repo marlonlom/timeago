@@ -40,12 +40,13 @@ buildscript {
 }
 
 plugins {
-    id("java")
+    id("java-library")
     id("org.jetbrains.kotlin.jvm") version "$kotlin_version"
     id("org.jetbrains.dokka") version "$dokka_version"
 }
 
 boolean android = project.property('android')
+int java_release_version = project.property('java_release_version')
 
 allprojects {
     repositories {
@@ -58,6 +59,16 @@ allprojects {
 
 wrapper {
     version = '6.8.2'
+}
+
+//java {
+//    toolchain {
+//        languageVersion = JavaLanguageVersion.of(java_release_version)
+//    }
+//}
+
+compileJava {
+    options.release = java_release_version
 }
 
 //def clean = tasks.register("clean", type: Delete) {
