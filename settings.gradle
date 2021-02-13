@@ -15,4 +15,17 @@
  * under the License.
  */
 
-include ':ta_sample', ':ta_library'
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        jcenter()
+    }
+}
+
+// TODO aanno: no way to import the property from gradle.properties here
+boolean android = false
+
+if (android) {
+    include ':ta_sample'
+}
+include ':ta_library'
