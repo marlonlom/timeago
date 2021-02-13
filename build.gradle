@@ -45,32 +45,35 @@ plugins {
     id("org.jetbrains.dokka") version "$dokka_version"
 }
 
+wrapper {
+    version = '6.8.2'
+}
+
 boolean android = project.property('android')
 int java_release_version = project.property('java_release_version')
+String mavenProjectGroup = project.property('mavenProjectGroup')
+String projectVersion = project.property('projectVersion')
+group = mavenProjectGroup
+version = projectVersion
 
 allprojects {
+
     repositories {
         if (android) {
             google()
         }
         jcenter()
     }
+
+    group = mavenProjectGroup
+    version = projectVersion
+
+    compileJava {
+        options.release = java_release_version
+    }
+
 }
 
-wrapper {
-    version = '6.8.2'
+dependencies {
+    implementation(project(":ta_library"))
 }
-
-//java {
-//    toolchain {
-//        languageVersion = JavaLanguageVersion.of(java_release_version)
-//    }
-//}
-
-compileJava {
-    options.release = java_release_version
-}
-
-//def clean = tasks.register("clean", type: Delete) {
-//    delete rootProject.buildDir
-//}

@@ -29,3 +29,5 @@ if (android) {
     include ':ta_sample'
 }
 include ':ta_library'
+
+rootProject.name="timeago"
