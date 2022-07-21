@@ -50,6 +50,14 @@ class TimeAgo
 /**
  * Instantiates a new Time ago.
  */
+
+@JvmStatic
+        @JvmOverloads
+        fun using(time: Long, resources: TimeAgoMessages = TimeAgoMessages.Builder().defaultLocale().build()): String {
+            val dim = getTimeDistanceInMinutes(time)
+            val timeAgo = buildTimeagoText(resources, dim)
+            return timeAgo.toString()
+        }
 private constructor() {
 
     /**
@@ -267,13 +275,7 @@ private constructor() {
          * @return the 'time ago' formatted text using date time
          * @see TimeAgoMessages
          */
-        @JvmStatic
-        @JvmOverloads
-        fun using(time: Long, resources: TimeAgoMessages = TimeAgoMessages.Builder().defaultLocale().build()): String {
-            val dim = getTimeDistanceInMinutes(time)
-            val timeAgo = buildTimeagoText(resources, dim)
-            return timeAgo.toString()
-        }
+        
 
         /**
          * Build timeago text string builder.
