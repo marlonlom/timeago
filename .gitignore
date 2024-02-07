@@ -35,6 +35,7 @@ proguard/
 
 # Log Files
 *.log
+*.out
 
 # Android Studio
 /*/build/
@@ -61,6 +62,7 @@ obj/
 *.iml
 *.iws
 /out/
+.idea/
 
 # User-specific configurations
 .idea/libraries/
