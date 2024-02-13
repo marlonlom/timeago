@@ -15,43 +15,63 @@
  * under the License.
  */
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+@Suppress("DSL_SCOPE_VIOLATION")
+plugins {
+  alias(libs.plugins.android.application)
+  alias(libs.plugins.kotlin.android)
+}
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion = '28.0.3'
-    defaultConfig {
-        applicationId "com.github.marlonlom.utilities.timeago"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  namespace = "com.github.marlonlom.timeago.sample"
+  compileSdk = 34
+
+  defaultConfig {
+    applicationId = "com.github.marlonlom.timeago.sample"
+    minSdk = 24
+    targetSdk = 34
+    versionCode = 1
+    versionName = "1.0.0"
+
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+  }
+
+  buildTypes {
+    release {
+      isMinifyEnabled = true
+      isShrinkResources = true
+      isDebuggable = false
+      proguardFiles(
+        getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+      )
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+    debug {
+      isMinifyEnabled = false
+      isDebuggable = true
     }
-    lintOptions {
-        abortOnError false
+  }
+  compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+  }
+  kotlinOptions {
+    jvmTarget = JavaVersion.VERSION_17.toString()
+  }
+  packaging {
+    resources {
+      excludes += "/META-INF/{AL2.0,LGPL2.1}"
     }
+  }
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('androidx.test.espresso:espresso-core:3.2.0', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    implementation project(':ta_library')
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.11.0'
-    testImplementation 'junit:junit:4.13.2'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-}
-repositories {
-    mavenCentral()
+  implementation(project(":ta_library"))
+
+  implementation(libs.core.ktx)
+  implementation(platform(libs.kotlin.bom))
+  implementation(libs.appcompat)
+  implementation(libs.material)
+  implementation(libs.constraintlayout)
+  testImplementation(libs.junit)
+  androidTestImplementation(libs.androidx.test.ext.junit)
+  androidTestImplementation(libs.espresso.core)
 }

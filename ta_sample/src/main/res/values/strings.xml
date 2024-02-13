@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <!--
   ~ Copyright (c) 2016, marlonlom
   ~
@@ -16,16 +18,16 @@
   -->
 
 <resources>
-    <string name="app_name">TimeAgo</string>
-    <string name="title_activity_tabbed_main">TimeAgo</string>
-    <string name="action_settings">Settings</string>
-    <string name="tabbed_main_tab_how_to">How to use</string>
-    <string name="tabbed_main_tab_from">Elapsed</string>
-    <string name="tabbed_main_tab_until">Remaining</string>
-    <string name="tabbed_main_detail_item" formatted="false">
+  <string name="app_name">TimeAgo</string>
+  <string name="title_activity_tabbed_main">TimeAgo</string>
+  <string name="action_settings">Settings</string>
+  <string name="tabbed_main_tab_how_to">How to use</string>
+  <string name="tabbed_main_tab_from">Elapsed</string>
+  <string name="tabbed_main_tab_until">Remaining</string>
+  <string name="tabbed_main_detail_item" formatted="false">
         <![CDATA[&nbsp;<i>%s</i>&nbsp;&minus;&nbsp;%s<br>]]>
     </string>
-    <string name="tabbed_main_detail_how_to" formatted="false">
+  <string name="tabbed_main_detail_how_to" formatted="false">
         <![CDATA[
         Input some date time value as milliseconds:
         <br><br>
@@ -41,6 +43,6 @@
         <br><br><i>Languages supported</i>: Spanish (es), English (en), German (de), French (fr), Italian (it), Portuguese (pt).
         ]]>
     </string>
-    <string name="tabbed_main_detail_from" formatted="false"><![CDATA[%s<br>]]></string>
-    <string name="tabbed_main_detail_until" formatted="false"><![CDATA[%s<br>]]></string>
+  <string name="tabbed_main_detail_from" formatted="false"><![CDATA[%s<br>]]></string>
+  <string name="tabbed_main_detail_until" formatted="false"><![CDATA[%s<br>]]></string>
 </resources>
