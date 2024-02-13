@@ -34,5 +34,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "timeago"
 include(":ta_library")
-//include(":ta_sample")
-include(":myapplication")
+include(":ta_sample")
