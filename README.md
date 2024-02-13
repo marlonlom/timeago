@@ -1,27 +1,33 @@
 # TimeAgo
- 
+
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.marlonlom/timeago.svg)](http://www.mvnrepository.com/artifact/com.github.marlonlom/timeago)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Timeago-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/4707)
-[![Download](https://api.bintray.com/packages/marlonlom/timeago/timeago/images/download.svg) ](https://bintray.com/marlonlom/timeago/timeago/_latestVersion)
-[![Build Status](https://travis-ci.org/marlonlom/timeago.svg?branch=master)](https://travis-ci.org/marlonlom/timeago)
-<a href="http://www.methodscount.com/?lib=com.github.marlonlom%3Atimeago%3A%2B"><img src="https://img.shields.io/badge/Methods and size-97 | 32 KB-e91e63.svg"/></a>
 
 Simple java library for displaying dates as relative time ago language.
 
 ## Examples:
+
+```
 - 4 days ago
 - 15 years ago
 - a minute ago
 - just now
+```
 
 ## Usage:
 
 ### Import as a dependency:
 
-Gradle:
+Gradle (Kotlin):
 
 ```
-compile 'com.github.marlonlom:timeago:$latestVersion'
+implementation("com.github.marlonlom:timeago:$latestVersion")
+```
+
+Gradle (Groovy):
+
+```
+implementation "com.github.marlonlom:timeago:$latestVersion"
 ```
 
 Maven:
@@ -37,16 +43,16 @@ Maven:
 ### Use it in your code:
 
 ```java
-String text = TimeAgo.using(timeInMillis);
+String text=TimeAgo.using(timeInMillis);
 ```
 
-Where _timeInMillis_, based on current date and time, is defined like 
+Where _timeInMillis_, based on current date and time, is defined like
 
 ```java
 /* You can use java.util.Calendar.getInstance().getTimeInMillis()*/
 /* Also, with java 8, java.time.Instant.now().toEpochMilli() */
 
-long timeInMillis = System.currentTimeMillis();
+long timeInMillis=System.currentTimeMillis();
 ```
 
 ### With Specific Locale (by language tag):
@@ -54,13 +60,16 @@ long timeInMillis = System.currentTimeMillis();
 For specific language usage, use _TimeAgoMessages_:
 
 ```java
-Locale LocaleBylanguageTag = Locale.forLanguageTag("es"); 
-TimeAgoMessages messages = new TimeAgoMessages.Builder().withLocale(LocaleBylanguageTag).build();
+Locale LocaleBylanguageTag=Locale.forLanguageTag("es");
+TimeAgoMessages messages=new TimeAgoMessages.Builder().withLocale(LocaleBylanguageTag).build();
 
-String text = TimeAgo.using(timeInMillis, messages);
+String text=TimeAgo.using(timeInMillis,messages);
 ```
 
-Languages supported: Spanish (es), English (en), Dutch (nl), German (de), French (fr), Italian (it), Portuguese (pt), Indonesian (id), Czech (cs), Arabic (ar).
+#### Languages supported
+Spanish (es), English (en), Dutch (nl), German (de), French (fr), Italian (it), Portuguese (pt),
+Indonesian (id), Czech (cs), Arabic (ar), and more. You can see more
+details [reading this information](docs/languages_supported.md).
 
 ## Demo
 
@@ -74,9 +83,8 @@ If you like this library, please tell others about it :thumbsup::thumbsup:
 <a href="https://plus.google.com/share?url=https://github.com/marlonlom/timeago" target="_blank" title="share to G+" style="width:100%"><img src="https://github.com/marlonlom/staticmaps_builder/blob/master/design/googleplus_icon.png" target="_blank"  title="Share on Google+" width="35" height=35 />
 <a href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/marlonlom/timeago" target="_blank" title="share to facebook" style="width:100%"><img src="https://github.com/marlonlom/staticmaps_builder/blob/master/design/facebook_icon.png" title="Share on Facebook" width="35" height=35 />
 
- - []()Follow me on **Twitter**: [**@Marlonlom**](https://twitter.com/marlonlom)
- - Contact me on **LinkedIn**: [**Marlonlom**](https://co.linkedin.com/in/marlonlom)
-
+- []()Follow me on **Twitter**: [**@Marlonlom**](https://twitter.com/marlonlom)
+- Contact me on **LinkedIn**: [**Marlonlom**](https://co.linkedin.com/in/marlonlom)
 
 ### License
 
