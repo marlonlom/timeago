@@ -75,6 +75,10 @@ details [reading this information](docs/languages_supported.md).
 
 Check the [Demo](https://goo.gl/y66vh4) here.
 
+![Sample app running](ta_screenshots/ta_sample_running.webp "Sample app running")
+
+
+
 ## Spread the word
 
 If you like this library, please tell others about it :thumbsup::thumbsup:
