@@ -25,8 +25,8 @@
   <string name="tabbed_main_tab_from">Elapsed</string>
   <string name="tabbed_main_tab_until">Remaining</string>
   <string name="tabbed_main_detail_item" formatted="false">
-        <![CDATA[&nbsp;<i>%s</i>&nbsp;&minus;&nbsp;%s<br>]]>
-    </string>
+    <![CDATA[&nbsp;<i>%s</i>&nbsp;&minus;&nbsp;%s<br>]]>
+  </string>
   <string name="tabbed_main_detail_how_to" formatted="false">
         <![CDATA[
         Input some date time value as milliseconds:
@@ -40,9 +40,14 @@
         </i>
         <br><br>
         For specific language usage, use <b>TimeAgoMessages</b>.
-        <br><br><i>Languages supported</i>: Spanish (es), English (en), German (de), French (fr), Italian (it), Portuguese (pt).
+        <br><br><br><i>Languages supported</i>:
+        <br><br>%1$s
+        <br><br>
         ]]>
     </string>
   <string name="tabbed_main_detail_from" formatted="false"><![CDATA[%s<br>]]></string>
   <string name="tabbed_main_detail_until" formatted="false"><![CDATA[%s<br>]]></string>
+  <string name="tabbed_main_heading_past">Past</string>
+  <string name="tabbed_main_heading_future">Future</string>
+  <string name="tabbed_main_heading" formatted="false"><![CDATA[%1$s properties for <b><i>%2$s</i></b><br><br>]]></string>
 </resources>
