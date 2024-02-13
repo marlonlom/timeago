@@ -25,7 +25,7 @@ plugins {
   id("maven-publish")
 }
 
-version = "4.0.3"
+version = "4.1.0"
 
 java {
   sourceCompatibility = JavaVersion.VERSION_17
@@ -63,7 +63,7 @@ publishing {
     create<MavenPublication>("maven") {
       groupId = "com.github.marlonlom"
       artifactId = "timeago"
-      version = "4.0.3"
+      version = "4.1.0"
 
       from(components["java"])
       archivesName = rootProject.name
