@@ -95,7 +95,7 @@ class PlaceholderFragment : Fragment() {
     sdf: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault()),
     currentTime: Long = Calendar.getInstance().timeInMillis,
     /* Change the language code as parameter for the [TimeAgoMessages] config here. */
-    languageCode: String = "zh-TW"
+    languageCode: String = ""
   ) {
     val arrayList = ArrayList<Long>()
     arrayList.add(currentTime)
