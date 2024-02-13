@@ -15,34 +15,23 @@
  * under the License.
  */
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+@file:Suppress("DSL_SCOPE_VIOLATION")
 
 buildscript {
-    ext.kotlin_version = '1.3.70'
-    ext.dokka_version = '0.9.17'
-
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jetbrains.dokka:dokka-gradle-plugin:${dokka_version}"
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
+  repositories {
+    google()
+    mavenCentral()
+  }
+  dependencies {
+    classpath(libs.kotlin.gradle.plugin)
+  }
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+  alias(libs.plugins.android.application) apply false
+  alias(libs.plugins.android.library) apply false
+  alias(libs.plugins.dokka) apply false
+  alias(libs.plugins.kotlin.android) apply false
+  alias(libs.plugins.kotlin.jvm) apply false
 }
-
-tasks.register('clean', Delete) {
-    delete rootProject.buildDir
-}
-
