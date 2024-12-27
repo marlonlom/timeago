@@ -36,6 +36,13 @@ java {
   archivesName = rootProject.name
 }
 
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+  @Suppress("DEPRECATION")
+  kotlinOptions {
+    jvmTarget = JavaVersion.VERSION_17.majorVersion
+  }
+}
+
 tasks.withType<Jar> {
   manifest {
     attributes["Main-Class"] = "com.github.marlonlom.utilities.timeago.TimeAgo"
@@ -81,14 +88,6 @@ publishing {
             url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
             distribution = "repo"
             comments = "A business-friendly OSS license"
-          }
-        }
-
-        developers {
-          developer {
-            id = "marlonlom"
-            name = "Marlon López"
-            email = "malm.gm@gmail.com"
           }
         }
 
