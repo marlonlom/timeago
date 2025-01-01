@@ -28,6 +28,7 @@ android {
   defaultConfig {
     applicationId = "com.github.marlonlom.timeago.sample"
     minSdk = 24
+    //noinspection OldTargetApi
     targetSdk = 34
     versionCode = 1
     versionName = "1.0.0"
