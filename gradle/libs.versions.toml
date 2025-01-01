@@ -1,15 +1,15 @@
 [versions]
-agp = "8.2.2"
+agp = "8.7.3"
 dokka = "1.9.10"
 kotlin = "2.1.0"
 
 [libraries]
 # implementation
-core-ktx = "androidx.core:core-ktx:1.12.0"
-kotlin-bom = "org.jetbrains.kotlin:kotlin-bom:1.8.22"
-appcompat = "androidx.appcompat:appcompat:1.6.1"
-material = "com.google.android.material:material:1.11.0"
-constraintlayout = "androidx.constraintlayout:constraintlayout:2.1.4"
+core-ktx = "androidx.core:core-ktx:1.15.0"
+kotlin-bom = "org.jetbrains.kotlin:kotlin-bom:2.1.0"
+appcompat = "androidx.appcompat:appcompat:1.7.0"
+material = "com.google.android.material:material:1.12.0"
+constraintlayout = "androidx.constraintlayout:constraintlayout:2.2.0"
 
 # implementation-plugins
 kotlin-gradle-plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22"
