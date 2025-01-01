@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.archivesName
-
 /*
  * Copyright (c) 2016, marlonlom
  *
@@ -33,7 +31,7 @@ java {
 
   withSourcesJar()
 
-  archivesName = rootProject.name
+  //archivesName = rootProject.name
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
@@ -73,7 +71,6 @@ publishing {
       version = "4.1.0"
 
       from(components["java"])
-      archivesName = rootProject.name
 
       pom {
         artifactId = "timeago"
