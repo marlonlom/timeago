@@ -12,7 +12,7 @@ material = "com.google.android.material:material:1.12.0"
 constraintlayout = "androidx.constraintlayout:constraintlayout:2.2.0"
 
 # implementation-plugins
-kotlin-gradle-plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0"
+kotlin-gradle-plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.10"
 
 # test-implementation
 junit = "junit:junit:4.13.2"
