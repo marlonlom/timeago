@@ -80,19 +80,20 @@ Check the [Demo](https://goo.gl/y66vh4) here.
 ![Sample app running](ta_screenshots/ta_sample_running.webp "Sample app running")
 
 
+# Documentation
 
-## Spread the word
+## Code-of-Conduct
 
-If you like this library, please tell others about it :thumbsup::thumbsup:
+See the [code of conduct](CODE_OF_CONDUCT.md) document for more information.
 
-<a href="https://twitter.com/intent/tweet?text=Trying%20to%20show%20relative%20date%20time%20texts%3F%20Check%20out%20this%20awesome%20library%20on%20Github%3A%20https://github.com/marlonlom/timeago" target="_blank" title="share to twitter" style="width:100%"><img src="https://github.com/marlonlom/staticmaps_builder/blob/master/design/twitter_icon.png" title="Share on Twitter" width="35" height=35 />
-<a href="https://plus.google.com/share?url=https://github.com/marlonlom/timeago" target="_blank" title="share to G+" style="width:100%"><img src="https://github.com/marlonlom/staticmaps_builder/blob/master/design/googleplus_icon.png" target="_blank"  title="Share on Google+" width="35" height=35 />
-<a href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/marlonlom/timeago" target="_blank" title="share to facebook" style="width:100%"><img src="https://github.com/marlonlom/staticmaps_builder/blob/master/design/facebook_icon.png" title="Share on Facebook" width="35" height=35 />
+## Contributing
 
-- []()Follow me on **Twitter**: [**@Marlonlom**](https://twitter.com/marlonlom)
-- Contact me on **LinkedIn**: [**Marlonlom**](https://co.linkedin.com/in/marlonlom)
+See the [Contributing](CONTRIBUTING.md) document for more information.
+
 
 ### License
+This application is distributed under the terms of the Apache License (Version 2.0). See the [license](LICENSE) for more
+information.
 
 ```
 Copyright 2016 marlonlom
