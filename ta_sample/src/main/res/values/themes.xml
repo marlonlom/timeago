@@ -19,17 +19,6 @@
 
 <resources>
   <!-- Base application theme. -->
-  <style name="Base.Theme.Timeago" parent="Theme.Material3.DayNight.NoActionBar">
-    <!-- Customize your light theme here. -->
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-  </style>
-
-  <style name="Theme.Timeago" parent="Base.Theme.Timeago" />
-
-  <style name="Theme.Timeago.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-  <style name="Theme.Timeago.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+  <style name="Theme.Timeago" parent="android:Theme.Material.Light.NoActionBar" />
 
 </resources>
