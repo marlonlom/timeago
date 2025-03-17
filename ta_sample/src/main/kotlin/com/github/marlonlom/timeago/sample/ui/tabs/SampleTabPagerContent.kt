@@ -38,6 +38,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.github.marlonlom.timeago.sample.R
 
+/**
+ * Sample tab pager content composable.
+ *
+ * @author marlonlom
+ *
+ * @param pagerState Current pager state.
+ * @param sampleTabs List of sample tabs for display.
+ */
 @Composable
 internal fun SampleTabPagerContent(pagerState: PagerState, sampleTabs: SampleTabItems) {
   val context = LocalContext.current
@@ -64,9 +72,9 @@ internal fun SampleTabPagerContent(pagerState: PagerState, sampleTabs: SampleTab
         Modifier.verticalScroll(rememberScrollState()),
       ) {
         Text(
-          modifier = Modifier
-            .fillMaxWidth(),
+          modifier = Modifier.fillMaxWidth(),
           text = annotatedString,
+          style = MaterialTheme.typography.bodyMedium,
           textAlign = TextAlign.Start,
           color = MaterialTheme.colorScheme.onSurface,
         )

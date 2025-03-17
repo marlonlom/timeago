@@ -85,6 +85,6 @@ typealias SampleTabItems = List<SampleTab>
  *
  * @property title Tab title.
  * @property information Tab detailed information.
- * @property icon Tab optional icon as [ImageVector]].
+ * @property icon Tab optional icon as [ImageVector].
  */
 data class SampleTab(val title: String, val information: String, val icon: ImageVector? = null)
