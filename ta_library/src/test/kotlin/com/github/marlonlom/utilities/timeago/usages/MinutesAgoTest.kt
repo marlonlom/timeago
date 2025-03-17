@@ -21,7 +21,7 @@ import com.github.marlonlom.utilities.timeago.DataBuilder.newLocalBundle
 import com.github.marlonlom.utilities.timeago.DataBuilder.newMessagesResource
 import com.github.marlonlom.utilities.timeago.DataBuilder.randomLanguageRef
 import com.github.marlonlom.utilities.timeago.DataBuilder.useTimeAgo
-import com.github.marlonlom.utilities.timeago.TimeAgo
+import com.github.marlonlom.utilities.timeago.Periods
 import com.github.marlonlom.utilities.timeago.TimeAgoMessages
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -41,7 +41,7 @@ import java.util.Calendar.getInstance as getCalendarInstance
  * @since 2.1.0
  */
 @RunWith(JUnit4::class)
-class MinutesAgoTest {
+internal class MinutesAgoTest {
 
   /**
    * Random language code for getting messages and making timeago work.
@@ -75,7 +75,7 @@ class MinutesAgoTest {
   fun shouldShowPastDateTimeWithNineMinutes() {
     val calendar = getCalendarInstance().apply { add(MINUTE, -9) }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.X_MINUTES_PAST.propertyKey, 9)
+    val expected = getExpectedMessage(localBundle!!, Periods.X_MINUTES_PAST.propertyKey, 9)
     assertEquals(expected, results)
   }
 
@@ -86,7 +86,7 @@ class MinutesAgoTest {
   fun shouldShowPastDateTimeWithOneMinute() {
     val calendar = getCalendarInstance().apply { add(MINUTE, -1) }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.ONE_MINUTE_PAST.propertyKey)
+    val expected = getExpectedMessage(localBundle!!, Periods.ONE_MINUTE_PAST.propertyKey)
     assertEquals(expected, results)
   }
 
@@ -100,7 +100,7 @@ class MinutesAgoTest {
       add(SECOND, 1)
     }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.X_MINUTES_FUTURE.propertyKey, 9)
+    val expected = getExpectedMessage(localBundle!!, Periods.X_MINUTES_FUTURE.propertyKey, 9)
     assertEquals(expected, results)
   }
 
@@ -111,7 +111,7 @@ class MinutesAgoTest {
   fun shouldShowFutureDateTimeWithOneMinute() {
     val calendar = getCalendarInstance().apply { add(SECOND, 61) }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.ONE_MINUTE_FUTURE.propertyKey)
+    val expected = getExpectedMessage(localBundle!!, Periods.ONE_MINUTE_FUTURE.propertyKey)
     assertEquals(expected, results)
   }
 }

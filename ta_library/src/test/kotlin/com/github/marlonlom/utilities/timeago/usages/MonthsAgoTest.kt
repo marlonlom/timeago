@@ -21,6 +21,7 @@ import com.github.marlonlom.utilities.timeago.DataBuilder.newLocalBundle
 import com.github.marlonlom.utilities.timeago.DataBuilder.newMessagesResource
 import com.github.marlonlom.utilities.timeago.DataBuilder.randomLanguageRef
 import com.github.marlonlom.utilities.timeago.DataBuilder.useTimeAgo
+import com.github.marlonlom.utilities.timeago.Periods
 import com.github.marlonlom.utilities.timeago.TimeAgo
 import com.github.marlonlom.utilities.timeago.TimeAgoMessages
 import org.junit.Assert.assertEquals
@@ -76,7 +77,7 @@ class MonthsAgoTest {
   fun shouldShowPastDateTimeWithAlmostOneMonth() {
     val calendar = getCalendarInstance().apply { add(DAY_OF_MONTH, -30) }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.ABOUT_A_MONTH_PAST.propertyKey)
+    val expected = getExpectedMessage(localBundle!!, Periods.ABOUT_A_MONTH_PAST.propertyKey)
     assertEquals(expected, results)
   }
 
@@ -90,7 +91,7 @@ class MonthsAgoTest {
       add(HOUR, 15)
     }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.ABOUT_A_MONTH_FUTURE.propertyKey)
+    val expected = getExpectedMessage(localBundle!!, Periods.ABOUT_A_MONTH_FUTURE.propertyKey)
     assertEquals(expected, results)
   }
 
@@ -101,7 +102,7 @@ class MonthsAgoTest {
   fun shouldShowPastDateTimeWithSixMonths() {
     val calendar = getCalendarInstance().apply { add(MONTH, -6) }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.X_MONTHS_PAST.propertyKey, 6)
+    val expected = getExpectedMessage(localBundle!!, Periods.X_MONTHS_PAST.propertyKey, 6)
     assertEquals(expected, results)
   }
 
@@ -112,7 +113,7 @@ class MonthsAgoTest {
   fun shouldShowFutureDateTimeWithSixMonths() {
     val calendar = getCalendarInstance().apply { add(MONTH, 6) }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.X_MONTHS_FUTURE.propertyKey, 6)
+    val expected = getExpectedMessage(localBundle!!, Periods.X_MONTHS_FUTURE.propertyKey, 6)
     assertEquals(expected, results)
   }
 }

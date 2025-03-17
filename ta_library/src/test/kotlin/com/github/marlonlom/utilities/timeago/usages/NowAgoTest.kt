@@ -21,7 +21,7 @@ import com.github.marlonlom.utilities.timeago.DataBuilder.newLocalBundle
 import com.github.marlonlom.utilities.timeago.DataBuilder.newMessagesResource
 import com.github.marlonlom.utilities.timeago.DataBuilder.randomLanguageRef
 import com.github.marlonlom.utilities.timeago.DataBuilder.useTimeAgo
-import com.github.marlonlom.utilities.timeago.TimeAgo.Periods.NOW
+import com.github.marlonlom.utilities.timeago.Periods
 import com.github.marlonlom.utilities.timeago.TimeAgoMessages
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -40,7 +40,7 @@ import java.util.ResourceBundle
  * @since 2.1.0
  */
 @RunWith(JUnit4::class)
-class NowAgoTest {
+internal class NowAgoTest {
 
   /**
    * Random language code for getting messages and making timeago work.
@@ -76,7 +76,7 @@ class NowAgoTest {
       add(MILLISECOND, (get(MILLISECOND) + 1) * -1)
     }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, NOW.propertyKey)
+    val expected = getExpectedMessage(localBundle!!, Periods.NOW.propertyKey)
     assertEquals(expected, results)
   }
 }
