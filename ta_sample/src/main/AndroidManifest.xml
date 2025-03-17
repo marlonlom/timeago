@@ -20,6 +20,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
   <application
+    android:name=".TimeagoSampleApp"
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
@@ -28,10 +29,8 @@
     android:theme="@style/Theme.Timeago">
 
     <activity
-      android:name=".ui.MainTabsActivity"
+      android:name=".ui.main.MainTabsActivity"
       android:exported="true"
-      android:configChanges="orientation"
-      android:screenOrientation="fullSensor"
       android:theme="@style/Theme.Timeago">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
