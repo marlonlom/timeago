@@ -19,6 +19,7 @@
 plugins {
   alias(libs.plugins.android.application)
   alias(libs.plugins.kotlin.android)
+  alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -56,6 +57,9 @@ android {
   kotlinOptions {
     jvmTarget = JavaVersion.VERSION_17.toString()
   }
+  buildFeatures {
+    compose = true
+  }
   packaging {
     resources {
       excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -66,12 +70,25 @@ android {
 dependencies {
   implementation(project(":ta_library"))
 
-  implementation(libs.core.ktx)
-  implementation(platform(libs.kotlin.bom))
-  implementation(libs.appcompat)
-  implementation(libs.material)
-  implementation(libs.constraintlayout)
+  val composeBom = platform(libs.androidx.compose.bom)
+  implementation(composeBom)
+  androidTestImplementation(composeBom)
+
+  implementation(libs.androidx.core.ktx)
+  implementation(libs.androidx.lifecycle.runtime.ktx)
+  implementation(libs.androidx.activity.compose)
+  implementation(libs.androidx.ui)
+  implementation(libs.androidx.ui.graphics)
+  implementation(libs.androidx.ui.tooling.preview)
+  implementation(libs.androidx.material3)
+
   testImplementation(libs.junit)
+
   androidTestImplementation(libs.androidx.test.ext.junit)
   androidTestImplementation(libs.espresso.core)
+  androidTestImplementation(platform(libs.androidx.compose.bom))
+  androidTestImplementation(libs.androidx.ui.test.junit4)
+
+  debugImplementation(libs.androidx.ui.tooling)
+  debugImplementation(libs.androidx.ui.test.manifest)
 }
