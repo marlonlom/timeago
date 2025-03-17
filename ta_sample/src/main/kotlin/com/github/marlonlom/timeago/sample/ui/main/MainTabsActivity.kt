@@ -18,27 +18,37 @@
 package com.github.marlonlom.timeago.sample.ui
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
-import com.github.marlonlom.timeago.sample.R
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
+import androidx.compose.ui.Modifier
 
 /**
  * The type Main tabs activity.
  *
  * @author marlonlom
  */
-class MainTabsActivity : AppCompatActivity() {
+class MainTabsActivity : ComponentActivity() {
 
-  /**
-   * The [FragmentStateAdapter] that will provide fragments for each of the sections.
-   */
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    enableEdgeToEdge()
+    setContent {
+      TimeagoTheme {
+        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+          Greeting(
+            name = "Android",
+            modifier = Modifier.padding(innerPadding)
+          )
+        }
+      }
+    }
+  }
+
+  /*
   private val mSectionsPagerAdapter by lazy { SectionsPagerAdapter(this) }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,12 +76,6 @@ class MainTabsActivity : AppCompatActivity() {
     else -> super.onOptionsItemSelected(item)
   }
 
-  /**
-   * Attaches the tab layout and the viewpager.
-   *
-   * @param tabLayout Tab layout widget.
-   * @param mViewPager Viewpager.
-   */
   private fun attachTabLayout(
     tabLayout: TabLayout,
     mViewPager: ViewPager2
@@ -84,18 +88,11 @@ class MainTabsActivity : AppCompatActivity() {
     }.attach()
   }
 
-  /**
-   * Retrieves page title for selected tab position.
-   *
-   * @param tabPosition Tab position.
-   *
-   * @return page title, or empty if position not listed.
-   */
   private fun getPageTitle(tabPosition: Int) = when (tabPosition) {
     0 -> getString(R.string.tabbed_main_tab_how_to)
     1 -> getString(R.string.tabbed_main_tab_from)
     2 -> getString(R.string.tabbed_main_tab_until)
     else -> ""
-  }
+  }*/
 
 }
