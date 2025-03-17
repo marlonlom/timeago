@@ -24,6 +24,16 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
+/**
+ * Brand theme composable function for Timeago Sample app.
+ *
+ * @author marlonlom
+ *
+ * @param darkTheme True/False if dark theme is applied.
+ * @param dynamicColor True/False if dynamic colors are applied.
+ * @param colorContrast Selected color contrast, defaults to [TimeagoSampleColorContrasts.STANDARD]
+ * @param content Composable ui content.
+ */
 @Composable
 fun TimeagoSampleTheme(
   darkTheme: Boolean = isSystemInDarkTheme(),

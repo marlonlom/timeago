@@ -23,9 +23,19 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.font.FontWeight
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+/**
+ * Sample tab row composable.
+ *
+ * @author marlonlom
+ *
+ * @param pagerState Current pager state.
+ * @param sampleTabs List of sample tabs for display.
+ * @param coroutineScope Coroutine scope.
+ */
 @Composable
 internal fun SampleTabRow(pagerState: PagerState, sampleTabs: SampleTabItems, coroutineScope: CoroutineScope) = TabRow(
   containerColor = MaterialTheme.colorScheme.background,
@@ -36,7 +46,7 @@ internal fun SampleTabRow(pagerState: PagerState, sampleTabs: SampleTabItems, co
     Tab(
       unselectedContentColor = MaterialTheme.colorScheme.onBackground,
       selectedContentColor = MaterialTheme.colorScheme.primary,
-      text = { Text(item.title) },
+      text = { Text(text = item.title, fontWeight = FontWeight.Bold) },
       icon = { item.icon?.also { Icon(it, null) } },
       selected = pagerState.currentPage == index,
       onClick = {
