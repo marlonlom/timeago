@@ -21,7 +21,7 @@ import com.github.marlonlom.utilities.timeago.DataBuilder.newLocalBundle
 import com.github.marlonlom.utilities.timeago.DataBuilder.newMessagesResource
 import com.github.marlonlom.utilities.timeago.DataBuilder.randomLanguageRef
 import com.github.marlonlom.utilities.timeago.DataBuilder.useTimeAgo
-import com.github.marlonlom.utilities.timeago.TimeAgo
+import com.github.marlonlom.utilities.timeago.Periods
 import com.github.marlonlom.utilities.timeago.TimeAgoMessages
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -40,7 +40,7 @@ import java.util.Calendar.getInstance as getCalendarInstance
  * @since 4.1.0
  */
 @RunWith(JUnit4::class)
-class WeeksAgoTest {
+internal class WeeksAgoTest {
 
   /**
    * Random language code for getting messages and making timeago work.
@@ -74,7 +74,7 @@ class WeeksAgoTest {
   fun shouldShowPastDateTimeWithAWeek() {
     val calendar = getCalendarInstance().apply { add(DAY_OF_MONTH, -8) }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.ONE_WEEK_PAST.propertyKey)
+    val expected = getExpectedMessage(localBundle!!, Periods.ONE_WEEK_PAST.propertyKey)
     assertEquals(expected, results)
   }
 
@@ -85,7 +85,7 @@ class WeeksAgoTest {
   fun shouldShowFutureDateTimeWithAWeek() {
     val calendar = getCalendarInstance().apply { add(DAY_OF_MONTH, 8) }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.ONE_WEEK_FUTURE.propertyKey)
+    val expected = getExpectedMessage(localBundle!!, Periods.ONE_WEEK_FUTURE.propertyKey)
     assertEquals(expected, results)
   }
 
@@ -96,7 +96,7 @@ class WeeksAgoTest {
   fun shouldShowPastDateTimeWithTwoWeeks() {
     val calendar = getCalendarInstance().apply { add(DAY_OF_MONTH, -16) }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.X_WEEKS_PAST.propertyKey, 2)
+    val expected = getExpectedMessage(localBundle!!, Periods.X_WEEKS_PAST.propertyKey, 2)
     assertEquals(expected, results)
   }
 
@@ -107,7 +107,7 @@ class WeeksAgoTest {
   fun shouldShowFutureDateTimeWithTwoWeeks() {
     val calendar = getCalendarInstance().apply { add(DAY_OF_MONTH, 16) }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.X_WEEKS_FUTURE.propertyKey, 2)
+    val expected = getExpectedMessage(localBundle!!, Periods.X_WEEKS_FUTURE.propertyKey, 2)
     assertEquals(expected, results)
   }
 
@@ -118,7 +118,7 @@ class WeeksAgoTest {
   fun shouldShowPastDateTimeWithThreeWeeks() {
     val calendar = getCalendarInstance().apply { add(DAY_OF_MONTH, -23) }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.X_WEEKS_PAST.propertyKey, 3)
+    val expected = getExpectedMessage(localBundle!!, Periods.X_WEEKS_PAST.propertyKey, 3)
     assertEquals(expected, results)
   }
 
@@ -129,7 +129,7 @@ class WeeksAgoTest {
   fun shouldShowFutureDateTimeWithThreeWeeks() {
     val calendar = getCalendarInstance().apply { add(DAY_OF_MONTH, 23) }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.X_WEEKS_FUTURE.propertyKey, 3)
+    val expected = getExpectedMessage(localBundle!!, Periods.X_WEEKS_FUTURE.propertyKey, 3)
     assertEquals(expected, results)
   }
 }

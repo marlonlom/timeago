@@ -21,7 +21,7 @@ import com.github.marlonlom.utilities.timeago.DataBuilder.newLocalBundle
 import com.github.marlonlom.utilities.timeago.DataBuilder.newMessagesResource
 import com.github.marlonlom.utilities.timeago.DataBuilder.randomLanguageRef
 import com.github.marlonlom.utilities.timeago.DataBuilder.useTimeAgo
-import com.github.marlonlom.utilities.timeago.TimeAgo
+import com.github.marlonlom.utilities.timeago.Periods
 import com.github.marlonlom.utilities.timeago.TimeAgoMessages
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -41,7 +41,7 @@ import java.util.Calendar.getInstance as getCalendarInstance
  * @since 2.1.0
  */
 @RunWith(JUnit4::class)
-class HoursAgoTest {
+internal class HoursAgoTest {
 
   /**
    * Random language code for getting messages and making timeago work.
@@ -75,7 +75,7 @@ class HoursAgoTest {
   fun shouldShowFutureDateTimeWithFiftyOneMinutes() {
     val calendar = getCalendarInstance().apply { add(MINUTE, 51) }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.ABOUT_AN_HOUR_FUTURE.propertyKey)
+    val expected = getExpectedMessage(localBundle!!, Periods.ABOUT_AN_HOUR_FUTURE.propertyKey)
     assertEquals(expected, results)
   }
 
@@ -86,7 +86,7 @@ class HoursAgoTest {
   fun shouldShowPastDateTimeWithFiftyOneMinutes() {
     val calendar = getCalendarInstance().apply { add(MINUTE, -51) }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.ABOUT_AN_HOUR_PAST.propertyKey)
+    val expected = getExpectedMessage(localBundle!!, Periods.ABOUT_AN_HOUR_PAST.propertyKey)
     assertEquals(expected, results)
   }
 
@@ -97,7 +97,7 @@ class HoursAgoTest {
   fun shouldShowPastDateTimeWithFiveHours() {
     val calendar = getCalendarInstance().apply { add(HOUR, -5) }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.X_HOURS_PAST.propertyKey, 5)
+    val expected = getExpectedMessage(localBundle!!, Periods.X_HOURS_PAST.propertyKey, 5)
     assertEquals(expected, results)
   }
 
@@ -108,7 +108,18 @@ class HoursAgoTest {
   fun shouldShowFutureDateTimeWithFiveHours() {
     val calendar = getCalendarInstance().apply { add(HOUR, 5) }
     val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.X_HOURS_FUTURE.propertyKey, 5)
+    val expected = getExpectedMessage(localBundle!!, Periods.X_HOURS_FUTURE.propertyKey, 5)
+    assertEquals(expected, results)
+  }
+
+  /**
+   * Should show future date time with five hours.
+   */
+  @Test
+  fun shouldShowFutureDateTimeWithTwentyFiveHours() {
+    val calendar = getCalendarInstance().apply { add(HOUR, 24) }
+    val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
+    val expected = getExpectedMessage(localBundle!!, Periods.ONE_DAY_FUTURE.propertyKey)
     assertEquals(expected, results)
   }
 }
