@@ -1,0 +1,80 @@
+package com.github.marlonlom.timeago.sample.ui.tabs
+
+import android.content.Context
+import com.github.marlonlom.timeago.sample.R
+import com.github.marlonlom.timeago.sample.utils.CalendarSampleDataUtil
+import com.github.marlonlom.timeago.sample.utils.SupportedLanguageSelector
+import com.github.marlonlom.utilities.timeago.TimeAgo
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+
+/**
+ * Sample tab information selector single object.
+ *
+ * @author marlonlom
+ */
+object TabInformationSelector {
+
+  /**
+   * Prepare usage dates information.
+   *
+   * @param context Application context.
+   * @param tabDetailTpl Tab detail text template.
+   * @param isPast True/False if past times handling.
+   * @param sdf Simple date format.
+   * @param currentTime Current time as millis.
+   * @param languageCode Provided language code. See [SupportedLanguageSelector] for available languages.
+   *
+   * @see SupportedLanguageSelector
+   *
+   * @return Dates usage information as text.
+   */
+  fun prepareUsageDatesInformation(
+    context: Context,
+    tabDetailTpl: String,
+    isPast: Boolean,
+    sdf: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault()),
+    currentTime: Long = Calendar.getInstance().timeInMillis,
+    /* Change the language code as parameter for the [TimeAgoMessages] config here. */
+    languageCode: String = Locale.getDefault().language
+  ): String {
+    val arrayList = ArrayList<Long>()
+    arrayList.add(currentTime)
+    arrayList.addAll(CalendarSampleDataUtil.buildDateTimeList(currentTime, isPast))
+
+    val timeAgoMessages = SupportedLanguageSelector.getTimeAgoMessagesByLang(languageCode)
+
+    val builder1 = StringBuilder()
+    builder1.append(getHeadingText(context, languageCode, isPast))
+
+    for (item in arrayList) {
+      val calendar = Calendar.getInstance()
+      calendar.timeInMillis = item
+      val formattedDate = sdf.format(calendar.time)
+      val resultText = TimeAgo.using(item, timeAgoMessages)
+      builder1.append(String.format(tabDetailTpl, formattedDate, resultText))
+    }
+
+    val resId = if (isPast) R.string.tabbed_main_detail_from else R.string.tabbed_main_detail_until
+    return context.getString(resId, builder1.toString())
+  }
+
+  /**
+   * Returns heading text for elapsed and remaining tab contents.
+   *
+   * @param context Application context.
+   * @param languageCode Provided language code.
+   * @param isPast True/False if past times handling.
+   *
+   * @return Generated heading text.
+   */
+  private fun getHeadingText(context: Context, languageCode: String, isPast: Boolean): String {
+    val timelineText = when {
+      isPast -> context.getString(R.string.tabbed_main_heading_past)
+      else -> context.getString(R.string.tabbed_main_heading_future)
+    }
+    val languageText = SupportedLanguageSelector.getLanguageTextFor(languageCode)
+    return context.getString(R.string.tabbed_main_heading, timelineText, languageText)
+  }
+}

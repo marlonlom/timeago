@@ -15,84 +15,71 @@
  * under the License.
  */
 
-package com.github.marlonlom.timeago.sample.ui
+package com.github.marlonlom.timeago.sample.ui.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
+import com.github.marlonlom.timeago.sample.R
+import com.github.marlonlom.timeago.sample.ui.tabs.SampleTabScreen
+import com.github.marlonlom.timeago.sample.ui.theme.TimeagoSampleTheme
 
 /**
  * The type Main tabs activity.
  *
  * @author marlonlom
  */
+@OptIn(ExperimentalMaterial3Api::class)
 class MainTabsActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     enableEdgeToEdge()
     setContent {
-      TimeagoTheme {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-          Greeting(
-            name = "Android",
-            modifier = Modifier.padding(innerPadding)
-          )
+      TimeagoSampleTheme(dynamicColor = false) {
+        Scaffold(
+          modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.surface),
+          topBar = {
+            TopAppBar(
+              title = {
+                Text(
+                  text = stringResource(R.string.app_name),
+                  color = MaterialTheme.colorScheme.secondary,
+                  style = MaterialTheme.typography.headlineLarge,
+                  fontWeight = FontWeight.Bold,
+                  maxLines = 1,
+                  overflow = TextOverflow.Ellipsis
+                )
+              }
+            )
+          }
+        ) { innerPadding ->
+          Column(
+            modifier = Modifier
+              .padding(innerPadding),
+            verticalArrangement = Arrangement.Top
+          ) {
+            SampleTabScreen()
+          }
         }
       }
     }
   }
-
-  /*
-  private val mSectionsPagerAdapter by lazy { SectionsPagerAdapter(this) }
-
-  override fun onCreate(savedInstanceState: Bundle?) {
-    enableEdgeToEdge()
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main_tabs)
-
-    val toolbar = findViewById<Toolbar>(R.id.toolbar)
-    setSupportActionBar(toolbar)
-
-    val mViewPager = findViewById<ViewPager2>(R.id.container)
-    mViewPager.adapter = mSectionsPagerAdapter
-    val tabLayout = findViewById<TabLayout>(R.id.tabs)
-
-    attachTabLayout(tabLayout, mViewPager)
-  }
-
-  override fun onCreateOptionsMenu(menu: Menu): Boolean {
-    menuInflater.inflate(R.menu.menu_main_tabs, menu)
-    return true
-  }
-
-  override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
-    R.id.action_settings -> true
-    else -> super.onOptionsItemSelected(item)
-  }
-
-  private fun attachTabLayout(
-    tabLayout: TabLayout,
-    mViewPager: ViewPager2
-  ) {
-    TabLayoutMediator(
-      tabLayout,
-      mViewPager
-    ) { tab: TabLayout.Tab, position: Int ->
-      tab.text = getPageTitle(position)
-    }.attach()
-  }
-
-  private fun getPageTitle(tabPosition: Int) = when (tabPosition) {
-    0 -> getString(R.string.tabbed_main_tab_how_to)
-    1 -> getString(R.string.tabbed_main_tab_from)
-    2 -> getString(R.string.tabbed_main_tab_until)
-    else -> ""
-  }*/
-
 }
