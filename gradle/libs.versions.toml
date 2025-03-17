@@ -5,11 +5,19 @@ kotlin = "2.1.10"
 
 [libraries]
 # implementation
-core-ktx = "androidx.core:core-ktx:1.15.0"
-kotlin-bom = "org.jetbrains.kotlin:kotlin-bom:2.1.10"
-appcompat = "androidx.appcompat:appcompat:1.7.0"
-material = "com.google.android.material:material:1.12.0"
-constraintlayout = "androidx.constraintlayout:constraintlayout:2.2.1"
+androidx-activity-compose = "androidx.activity:activity-compose:1.10.1"
+androidx-lifecycle-runtime-ktx = "androidx.lifecycle:lifecycle-runtime-ktx:2.8.7"
+androidx-core-ktx = "androidx.core:core-ktx:1.15.0"
+
+# implementation: androidx.compose:compose-bom
+androidx-compose-bom = "androidx.compose:compose-bom:2025.03.00"
+androidx-ui = { module = "androidx.compose.ui:ui" }
+androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
+androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidx-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
+androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+androidx-material3 = { module = "androidx.compose.material3:material3" }
 
 # implementation-plugins
 kotlin-gradle-plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.10"
@@ -21,10 +29,10 @@ junit = "junit:junit:4.13.2"
 androidx-test-ext-junit = "androidx.test.ext:junit:1.2.1"
 espresso-core = "androidx.test.espresso:espresso-core:3.6.1"
 
-
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
