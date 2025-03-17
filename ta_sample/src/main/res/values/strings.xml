@@ -17,9 +17,7 @@
   under the License.
 -->
 <resources>
-  <string name="app_name">TimeAgo</string>
-  <string name="title_activity_tabbed_main">TimeAgo</string>
-  <string name="action_settings">Settings</string>
+  <string name="app_name" translatable="false">TimeAgo</string>
   <string name="tabbed_main_tab_how_to">How to use</string>
   <string name="tabbed_main_tab_from">Elapsed</string>
   <string name="tabbed_main_tab_until">Remaining</string>
@@ -49,4 +47,5 @@
   <string name="tabbed_main_heading_past">Past</string>
   <string name="tabbed_main_heading_future">Future</string>
   <string name="tabbed_main_heading" formatted="false"><![CDATA[%1$s properties for <b><i>%2$s</i></b><br><br>]]></string>
+  <string name="text_settings_icon_cd">Settings icon</string>
 </resources>
