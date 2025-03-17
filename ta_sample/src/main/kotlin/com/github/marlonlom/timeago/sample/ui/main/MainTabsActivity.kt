@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, marlonlom
+ * Copyright (c) 2016, marlonlom
  *
  * Licensed under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
@@ -14,7 +14,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package com.github.marlonlom.timeago.sample.ui.main
 
 import android.os.Bundle
@@ -65,16 +64,16 @@ class MainTabsActivity : ComponentActivity() {
                   style = MaterialTheme.typography.headlineLarge,
                   fontWeight = FontWeight.Bold,
                   maxLines = 1,
-                  overflow = TextOverflow.Ellipsis
+                  overflow = TextOverflow.Ellipsis,
                 )
-              }
+              },
             )
-          }
+          },
         ) { innerPadding ->
           Column(
             modifier = Modifier
               .padding(innerPadding),
-            verticalArrangement = Arrangement.Top
+            verticalArrangement = Arrangement.Top,
           ) {
             SampleTabScreen()
           }
