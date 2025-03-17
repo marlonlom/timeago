@@ -43,9 +43,25 @@ internal object PeriodMessages {
     value: Int,
   ): String = if (value == 1) resources.getPropertyValue(periodKey) else resources.getPropertyValue(pluralKey, value)
 
+  /**
+   * Returns text for past x minutes.
+   *
+   * @param resources TimeAgo messages bundle.
+   * @param dim Difference in minutes calculation result.
+   * @param periodKey Period key name.
+   * @return text for future x minutes.
+   */
   fun getPastXMinutesText(resources: TimeAgoMessages, dim: Long, periodKey: String): String =
     resources.getPropertyValue(periodKey, dim)
 
+  /**
+   * Returns text for past x hours.
+   *
+   * @param resources TimeAgo messages bundle.
+   * @param dim Difference in minutes calculation result.
+   * @param periodKey Period key name.
+   * @return text for future x hours.
+   */
   fun getPastXHoursText(resources: TimeAgoMessages, dim: Long, periodKey: String): String {
     val hours = (dim / 60f).roundToLong()
     return handlePeriodKeyAsPlural(
@@ -56,6 +72,14 @@ internal object PeriodMessages {
     )
   }
 
+  /**
+   * Returns text for past x days.
+   *
+   * @param resources TimeAgo messages bundle.
+   * @param dim Difference in minutes calculation result.
+   * @param periodKey Period key name.
+   * @return text for future x days.
+   */
   fun getPastXDaysText(resources: TimeAgoMessages, dim: Long, periodKey: String): String {
     val days = (dim / 1440f).roundToLong()
     return handlePeriodKeyAsPlural(
@@ -66,6 +90,14 @@ internal object PeriodMessages {
     )
   }
 
+  /**
+   * Returns text for past x weeks.
+   *
+   * @param resources TimeAgo messages bundle.
+   * @param dim Difference in minutes calculation result.
+   * @param periodKey Period key name.
+   * @return text for future x weeks.
+   */
   fun getPastXWeeksText(resources: TimeAgoMessages, dim: Long, periodKey: String): String {
     val weeks = (dim / 10080f).roundToLong()
     return handlePeriodKeyAsPlural(
@@ -76,6 +108,14 @@ internal object PeriodMessages {
     )
   }
 
+  /**
+   * Returns text for past x months.
+   *
+   * @param resources TimeAgo messages bundle.
+   * @param dim Difference in minutes calculation result.
+   * @param periodKey Period key name.
+   * @return text for future x months.
+   */
   fun getPastXMonthsText(resources: TimeAgoMessages, dim: Long, periodKey: String): String {
     val months = (dim / 43200f).roundToLong()
     return handlePeriodKeyAsPlural(
@@ -86,14 +126,38 @@ internal object PeriodMessages {
     )
   }
 
+  /**
+   * Returns text for past x years.
+   *
+   * @param resources TimeAgo messages bundle.
+   * @param dim Difference in minutes calculation result.
+   * @param periodKey Period key name.
+   * @return text for future x years.
+   */
   fun getPastXYearsText(resources: TimeAgoMessages, dim: Long, periodKey: String): String {
     val years = (dim / 525600f).roundToLong()
     return resources.getPropertyValue(periodKey, years)
   }
 
+  /**
+   * Returns text for future x minutes.
+   *
+   * @param resources TimeAgo messages bundle.
+   * @param dim Difference in minutes calculation result.
+   * @param periodKey Period key name.
+   * @return text for future x minutes.
+   */
   fun getFutureXMinutesText(resources: TimeAgoMessages, dim: Long, periodKey: String): String =
     resources.getPropertyValue(periodKey, abs(dim.toFloat()))
 
+  /**
+   * Returns text for future x hours.
+   *
+   * @param resources TimeAgo messages bundle.
+   * @param dim Difference in minutes calculation result.
+   * @param periodKey Period key name.
+   * @return text for future x hours.
+   */
   fun getFutureXHoursText(resources: TimeAgoMessages, dim: Long, periodKey: String): String {
     val hours = abs((dim / 60f).roundToLong())
     return if (hours.toInt() == 24) {
@@ -108,6 +172,14 @@ internal object PeriodMessages {
     }
   }
 
+  /**
+   * Returns text for future x days.
+   *
+   * @param resources TimeAgo messages bundle.
+   * @param dim Difference in minutes calculation result.
+   * @param periodKey Period key name.
+   * @return text for future x daye.
+   */
   fun getFutureXDaysText(resources: TimeAgoMessages, dim: Long, periodKey: String): String {
     val days1 = abs((dim / 1440f).roundToLong())
     return handlePeriodKeyAsPlural(
@@ -118,6 +190,14 @@ internal object PeriodMessages {
     )
   }
 
+  /**
+   * Returns text for future x weeks.
+   *
+   * @param resources TimeAgo messages bundle.
+   * @param dim Difference in minutes calculation result.
+   * @param periodKey Period key name.
+   * @return text for future x weeks.
+   */
   fun getFutureXWeeksText(resources: TimeAgoMessages, dim: Long, periodKey: String): String {
     val weeks = abs((dim / 10080f).roundToLong())
     return handlePeriodKeyAsPlural(
@@ -128,6 +208,14 @@ internal object PeriodMessages {
     )
   }
 
+  /**
+   * Returns text for future x months.
+   *
+   * @param resources TimeAgo messages bundle.
+   * @param dim Difference in minutes calculation result.
+   * @param periodKey Period key name.
+   * @return text for future x months.
+   */
   fun getFutureXMonthsText(resources: TimeAgoMessages, dim: Long, periodKey: String): String {
     val months = abs((dim / 43200f).roundToLong())
     return if (months.toInt() == 12) {
@@ -142,6 +230,14 @@ internal object PeriodMessages {
     }
   }
 
+  /**
+   * Returns text for future x years.
+   *
+   * @param resources TimeAgo messages bundle.
+   * @param dim Difference in minutes calculation result.
+   * @param periodKey Period key name.
+   * @return text for future x years.
+   */
   fun getFutureXYearsText(resources: TimeAgoMessages, dim: Long, periodKey: String): String {
     val years = abs((dim / 525600f).roundToLong())
     return resources.getPropertyValue(periodKey, years)

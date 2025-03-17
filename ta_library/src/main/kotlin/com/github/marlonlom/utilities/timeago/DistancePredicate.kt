@@ -26,6 +26,7 @@ package com.github.marlonlom.utilities.timeago
  * @since 1.0.0
  */
 internal interface DistancePredicate {
+
   /**
    * Validate distance minutes boolean.
    *
