@@ -22,7 +22,6 @@ import com.github.marlonlom.utilities.timeago.DataBuilder.newMessagesResource
 import com.github.marlonlom.utilities.timeago.DataBuilder.randomLanguageRef
 import com.github.marlonlom.utilities.timeago.DataBuilder.useTimeAgo
 import com.github.marlonlom.utilities.timeago.Periods
-import com.github.marlonlom.utilities.timeago.TimeAgo
 import com.github.marlonlom.utilities.timeago.TimeAgoMessages
 import org.junit.Assert.assertEquals
 import org.junit.Before

@@ -88,67 +88,67 @@ private constructor() {
 
         Periods.X_HOURS_PAST -> {
           timeAgo.append(
-            PeriodMessages.getPastXHoursText(resources, dim, periodKey)
+            PeriodMessages.getPastXHoursText(resources, dim, periodKey),
           )
         }
 
         Periods.X_DAYS_PAST -> {
           timeAgo.append(
-            PeriodMessages.getPastXDaysText(resources, dim, periodKey)
+            PeriodMessages.getPastXDaysText(resources, dim, periodKey),
           )
         }
 
         Periods.X_WEEKS_PAST -> {
           timeAgo.append(
-            PeriodMessages.getPastXWeeksText(resources, dim, periodKey)
+            PeriodMessages.getPastXWeeksText(resources, dim, periodKey),
           )
         }
 
         Periods.X_MONTHS_PAST -> {
           timeAgo.append(
-            PeriodMessages.getPastXMonthsText(resources, dim, periodKey)
+            PeriodMessages.getPastXMonthsText(resources, dim, periodKey),
           )
         }
 
         Periods.X_YEARS_PAST -> {
           timeAgo.append(
-            PeriodMessages.getPastXYearsText(resources, dim, periodKey)
+            PeriodMessages.getPastXYearsText(resources, dim, periodKey),
           )
         }
 
         Periods.X_MINUTES_FUTURE -> {
           timeAgo.append(
-            PeriodMessages.getFutureXMinutesText(resources, dim, periodKey)
+            PeriodMessages.getFutureXMinutesText(resources, dim, periodKey),
           )
         }
 
         Periods.X_HOURS_FUTURE -> {
           timeAgo.append(
-            PeriodMessages.getFutureXHoursText(resources, dim, periodKey)
+            PeriodMessages.getFutureXHoursText(resources, dim, periodKey),
           )
         }
 
         Periods.X_DAYS_FUTURE -> {
           timeAgo.append(
-            PeriodMessages.getFutureXDaysText(resources, dim, periodKey)
+            PeriodMessages.getFutureXDaysText(resources, dim, periodKey),
           )
         }
 
         Periods.X_WEEKS_FUTURE -> {
           timeAgo.append(
-            PeriodMessages.getFutureXWeeksText(resources, dim, periodKey)
+            PeriodMessages.getFutureXWeeksText(resources, dim, periodKey),
           )
         }
 
         Periods.X_MONTHS_FUTURE -> {
           timeAgo.append(
-            PeriodMessages.getFutureXMonthsText(resources, dim, periodKey)
+            PeriodMessages.getFutureXMonthsText(resources, dim, periodKey),
           )
         }
 
         Periods.X_YEARS_FUTURE -> {
           timeAgo.append(
-            PeriodMessages.getFutureXYearsText(resources, dim, periodKey)
+            PeriodMessages.getFutureXYearsText(resources, dim, periodKey),
           )
         }
 
