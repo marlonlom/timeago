@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, marlonlom
+ * Copyright (c) 2016, marlonlom
  *
  * Licensed under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
@@ -14,7 +14,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package com.github.marlonlom.timeago.sample.utils
 
 import com.github.marlonlom.utilities.timeago.TimeAgoMessages
@@ -83,12 +82,10 @@ object SupportedLanguageSelector {
    *
    * @return Selected language text.
    */
-  fun getLanguageTextFor(
-    lang: String
-  ): String = languagesInventory[
+  fun getLanguageTextFor(lang: String): String = languagesInventory[
     when {
       languagesInventory.containsKey(lang) -> lang
       else -> "en"
-    }
+    },
   ].let { "$it ($lang)" }
 }
