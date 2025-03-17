@@ -72,7 +72,7 @@ private constructor() {
     NOW(
       "ml.timeago.now",
       object : DistancePredicate {
-        override fun validateDistanceMinutes(distance: Long): Boolean = distance in 0L..(0.99).toLong()
+        override fun validateDistanceMinutes(distance: Long): Boolean = distance in 0L..0.99.toLong()
       },
     ),
     ONE_MINUTE_PAST(
