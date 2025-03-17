@@ -31,7 +31,7 @@ java {
 
   withSourcesJar()
 
-  //archivesName = rootProject.name
+  // archivesName = rootProject.name
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
@@ -94,7 +94,6 @@ publishing {
           url = "https://github.com/marlonlom/timeago"
         }
       }
-
     }
   }
 }

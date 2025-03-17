@@ -14,7 +14,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package com.github.marlonlom.utilities.timeago.usages
 
 import com.github.marlonlom.utilities.timeago.DataBuilder.getExpectedMessage
@@ -22,16 +21,16 @@ import com.github.marlonlom.utilities.timeago.DataBuilder.newLocalBundle
 import com.github.marlonlom.utilities.timeago.DataBuilder.newMessagesResource
 import com.github.marlonlom.utilities.timeago.DataBuilder.randomLanguageRef
 import com.github.marlonlom.utilities.timeago.DataBuilder.useTimeAgo
-import com.github.marlonlom.utilities.timeago.TimeAgo.Periods.*
+import com.github.marlonlom.utilities.timeago.TimeAgo
 import com.github.marlonlom.utilities.timeago.TimeAgoMessages
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import java.util.*
 import java.util.Calendar.MONTH
 import java.util.Calendar.YEAR
+import java.util.ResourceBundle
 import java.util.Calendar.getInstance as getCalendarInstance
 
 /**
@@ -44,106 +43,106 @@ import java.util.Calendar.getInstance as getCalendarInstance
 @RunWith(JUnit4::class)
 class YearsAgoTest {
 
-    /**
-     * Random language code for getting messages and making timeago work.
-     */
-    private val languageRef: String = randomLanguageRef
+  /**
+   * Random language code for getting messages and making timeago work.
+   */
+  private val languageRef: String = randomLanguageRef
 
-    /**
-     * The time ago messages.
-     */
-    private lateinit var timeAgoMessages: TimeAgoMessages
+  /**
+   * The time ago messages.
+   */
+  private lateinit var timeAgoMessages: TimeAgoMessages
 
-    /**
-     * The Local bundle.
-     */
-    private var localBundle: ResourceBundle? = null
+  /**
+   * The Local bundle.
+   */
+  private var localBundle: ResourceBundle? = null
 
-    /**
-     * Setup messages resource.
-     */
-    @Before
-    fun setupMessagesResource() {
-        println("<${javaClass.simpleName}> Selected language for testing: $languageRef.")
-        timeAgoMessages = newMessagesResource(languageRef)
-        localBundle = newLocalBundle(languageRef)
+  /**
+   * Setup messages resource.
+   */
+  @Before
+  fun setupMessagesResource() {
+    println("<${javaClass.simpleName}> Selected language for testing: $languageRef.")
+    timeAgoMessages = newMessagesResource(languageRef)
+    localBundle = newLocalBundle(languageRef)
+  }
+
+  /**
+   * Should show past date time with almost two years.
+   */
+  @Test
+  fun shouldShowPastDateTimeWithAlmostTwoYears() {
+    val calendar = getCalendarInstance().apply {
+      add(MONTH, -10)
+      add(YEAR, -1)
     }
+    val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
+    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.ALMOST_TWO_YEARS_PAST.propertyKey)
+    assertEquals(expected, results)
+  }
 
-    /**
-     * Should show past date time with almost two years.
-     */
-    @Test
-    fun shouldShowPastDateTimeWithAlmostTwoYears() {
-        val calendar = getCalendarInstance().apply {
-            add(MONTH, -10)
-            add(YEAR, -1)
-        }
-        val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-        val expected = getExpectedMessage(localBundle!!, ALMOST_TWO_YEARS_PAST.propertyKey)
-        assertEquals(expected, results)
+  /**
+   * Should show future date time with almost two years.
+   */
+  @Test
+  fun shouldShowFutureDateTimeWithAlmostTwoYears() {
+    val calendar = getCalendarInstance().apply {
+      add(MONTH, 10)
+      add(YEAR, 1)
     }
+    val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
+    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.ALMOST_TWO_YEARS_FUTURE.propertyKey)
+    assertEquals(expected, results)
+  }
 
-    /**
-     * Should show future date time with almost two years.
-     */
-    @Test
-    fun shouldShowFutureDateTimeWithAlmostTwoYears() {
-        val calendar = getCalendarInstance().apply {
-            add(MONTH, 10)
-            add(YEAR, 1)
-        }
-        val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-        val expected = getExpectedMessage(localBundle!!, ALMOST_TWO_YEARS_FUTURE.propertyKey)
-        assertEquals(expected, results)
+  /**
+   * Should show past date time over one year.
+   */
+  @Test
+  fun shouldShowPastDateTimeOverOneYear() {
+    val calendar = getCalendarInstance().apply {
+      add(MONTH, -4)
+      add(YEAR, -1)
     }
+    val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
+    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.OVER_A_YEAR_PAST.propertyKey)
+    assertEquals(expected, results)
+  }
 
-    /**
-     * Should show past date time over one year.
-     */
-    @Test
-    fun shouldShowPastDateTimeOverOneYear() {
-        val calendar = getCalendarInstance().apply {
-            add(MONTH, -4)
-            add(YEAR, -1)
-        }
-        val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-        val expected = getExpectedMessage(localBundle!!, OVER_A_YEAR_PAST.propertyKey)
-        assertEquals(expected, results)
-    }
+  /**
+   * Should show past date time with almost one year.
+   */
+  @Test
+  fun shouldShowPastDateTimeWithAlmostOneYear() {
+    val calendar = getCalendarInstance().apply { add(MONTH, -12) }
+    val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
+    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.ABOUT_A_YEAR_PAST.propertyKey)
+    assertEquals(expected, results)
+  }
 
-    /**
-     * Should show past date time with almost one year.
-     */
-    @Test
-    fun shouldShowPastDateTimeWithAlmostOneYear() {
-        val calendar = getCalendarInstance().apply { add(MONTH, -12) }
-        val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-        val expected = getExpectedMessage(localBundle!!, ABOUT_A_YEAR_PAST.propertyKey)
-        assertEquals(expected, results)
+  /**
+   * Should show future date time over one year.
+   */
+  @Test
+  fun shouldShowFutureDateTimeOverOneYear() {
+    val calendar = getCalendarInstance().apply {
+      add(MONTH, 4)
+      add(YEAR, 1)
     }
+    val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
+    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.OVER_A_YEAR_FUTURE.propertyKey)
+    assertEquals(expected, results)
+  }
 
-    /**
-     * Should show future date time over one year.
-     */
-    @Test
-    fun shouldShowFutureDateTimeOverOneYear() {
-        val calendar = getCalendarInstance().apply {
-            add(MONTH, 4)
-            add(YEAR, 1)
-        }
-        val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-        val expected = getExpectedMessage(localBundle!!, OVER_A_YEAR_FUTURE.propertyKey)
-        assertEquals(expected, results)
-    }
-
-    /**
-     * Should show future date time with almost one year.
-     */
-    @Test
-    fun shouldShowFutureDateTimeWithAlmostOneYear() {
-        val calendar = getCalendarInstance().apply { add(MONTH, 12) }
-        val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-        val expected = getExpectedMessage(localBundle!!, ABOUT_A_YEAR_FUTURE.propertyKey)
-        assertEquals(expected, results)
-    }
+  /**
+   * Should show future date time with almost one year.
+   */
+  @Test
+  fun shouldShowFutureDateTimeWithAlmostOneYear() {
+    val calendar = getCalendarInstance().apply { add(MONTH, 12) }
+    val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
+    val expected = getExpectedMessage(localBundle!!, TimeAgo.Periods.ABOUT_A_YEAR_FUTURE.propertyKey)
+    assertEquals(expected, results)
+  }
 }

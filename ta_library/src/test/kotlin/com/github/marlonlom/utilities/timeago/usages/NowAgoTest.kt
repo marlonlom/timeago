@@ -14,7 +14,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package com.github.marlonlom.utilities.timeago.usages
 
 import com.github.marlonlom.utilities.timeago.DataBuilder.getExpectedMessage
@@ -29,8 +28,9 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import java.util.*
+import java.util.Calendar
 import java.util.Calendar.MILLISECOND
+import java.util.ResourceBundle
 
 /**
  * Unit tests class for TimeAgo usage for current date time.
@@ -42,42 +42,41 @@ import java.util.Calendar.MILLISECOND
 @RunWith(JUnit4::class)
 class NowAgoTest {
 
-    /**
-     * Random language code for getting messages and making timeago work.
-     */
-    private val languageRef: String = randomLanguageRef
+  /**
+   * Random language code for getting messages and making timeago work.
+   */
+  private val languageRef: String = randomLanguageRef
 
-    /**
-     * The time ago messages.
-     */
-    private lateinit var timeAgoMessages: TimeAgoMessages
+  /**
+   * The time ago messages.
+   */
+  private lateinit var timeAgoMessages: TimeAgoMessages
 
-    /**
-     * The Local bundle.
-     */
-    private var localBundle: ResourceBundle? = null
+  /**
+   * The Local bundle.
+   */
+  private var localBundle: ResourceBundle? = null
 
-    /**
-     * Setup messages resource.
-     */
-    @Before
-    fun setupMessagesResource() {
-        println("<${javaClass.simpleName}> Selected language for testing: $languageRef.")
-        timeAgoMessages = newMessagesResource(languageRef)
-        localBundle = newLocalBundle(languageRef)
+  /**
+   * Setup messages resource.
+   */
+  @Before
+  fun setupMessagesResource() {
+    println("<${javaClass.simpleName}> Selected language for testing: $languageRef.")
+    timeAgoMessages = newMessagesResource(languageRef)
+    localBundle = newLocalBundle(languageRef)
+  }
+
+  /**
+   * Should show actual date time.
+   */
+  @Test
+  fun shouldShowDateTimeNow() {
+    val calendar = Calendar.getInstance().apply {
+      add(MILLISECOND, (get(MILLISECOND) + 1) * -1)
     }
-
-    /**
-     * Should show actual date time.
-     */
-    @Test
-    fun shouldShowDateTimeNow() {
-        val calendar = Calendar.getInstance().apply {
-            add(MILLISECOND, (get(MILLISECOND) + 1) * -1)
-        }
-        val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
-        val expected = getExpectedMessage(localBundle!!, NOW.propertyKey)
-        assertEquals(expected, results)
-    }
-
+    val results = useTimeAgo(calendar.timeInMillis, timeAgoMessages)
+    val expected = getExpectedMessage(localBundle!!, NOW.propertyKey)
+    assertEquals(expected, results)
+  }
 }
