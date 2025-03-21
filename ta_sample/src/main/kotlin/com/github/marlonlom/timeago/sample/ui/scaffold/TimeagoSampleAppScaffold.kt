@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.twotone.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -50,7 +51,8 @@ fun TimeagoSampleAppScaffold() {
   Scaffold(
     modifier = Modifier
       .fillMaxSize()
-      .background(MaterialTheme.colorScheme.surface),
+      .background(MaterialTheme.colorScheme.surface)
+      .safeContentPadding(),
     topBar = {
       TopAppBar(
         title = {

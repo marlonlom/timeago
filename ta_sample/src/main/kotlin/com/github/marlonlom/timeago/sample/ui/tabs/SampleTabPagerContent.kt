@@ -57,8 +57,8 @@ internal fun SampleTabPagerContent(pagerState: PagerState, sampleTabs: SampleTab
       .padding(
         PaddingValues(
           top = topMargin.dp,
-          start = horizontalMargin.dp,
-          end = horizontalMargin.dp,
+          start = horizontalMargin.minus(20.0).dp,
+          end = horizontalMargin.minus(20.0).dp,
         ),
       ),
     verticalAlignment = Alignment.Top,
