@@ -7,7 +7,7 @@ spotless = "7.0.3"
 [libraries]
 # implementation
 androidx-activity-compose = "androidx.activity:activity-compose:1.10.1"
-androidx-lifecycle-runtime-ktx = "androidx.lifecycle:lifecycle-runtime-ktx:2.8.7"
+androidx-lifecycle-runtime-ktx = "androidx.lifecycle:lifecycle-runtime-ktx:2.9.0"
 androidx-core-ktx = "androidx.core:core-ktx:1.16.0"
 
 # implementation: androidx.compose:compose-bom
