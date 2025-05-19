@@ -21,7 +21,7 @@ androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 androidx-material3 = { module = "androidx.compose.material3:material3" }
 
 # implementation-plugins
-kotlin-gradle-plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.20"
+kotlin-gradle-plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.21"
 
 # test-implementation
 junit = "junit:junit:4.13.2"
