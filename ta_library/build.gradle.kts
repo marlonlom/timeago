@@ -37,7 +37,10 @@ java {
 
 tasks.withType<KotlinJvmCompile>().configureEach {
   compilerOptions {
-    jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget(JavaVersion.VERSION_17.majorVersion))
+    jvmTarget.set(
+      org.jetbrains.kotlin.gradle.dsl.JvmTarget
+        .fromTarget(JavaVersion.VERSION_17.majorVersion),
+    )
   }
 }
 
