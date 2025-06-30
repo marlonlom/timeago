@@ -15,7 +15,8 @@
  * under the License.
  */
 
-@Suppress("DSL_SCOPE_VIOLATION")
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
+
 plugins {
   id("java-library")
   alias(libs.plugins.kotlin.jvm)
@@ -34,10 +35,9 @@ java {
   // archivesName = rootProject.name
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-  @Suppress("DEPRECATION")
-  kotlinOptions {
-    jvmTarget = JavaVersion.VERSION_17.majorVersion
+tasks.withType<KotlinJvmCompile>().configureEach {
+  compilerOptions {
+    jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget(JavaVersion.VERSION_17.majorVersion))
   }
 }
 
