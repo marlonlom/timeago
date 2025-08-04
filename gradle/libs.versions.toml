@@ -28,7 +28,7 @@ junit = "junit:junit:4.13.2"
 
 #android-test-implementation
 androidx-test-ext-junit = "androidx.test.ext:junit:1.2.1"
-espresso-core = "androidx.test.espresso:espresso-core:3.6.1"
+espresso-core = "androidx.test.espresso:espresso-core:3.7.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
