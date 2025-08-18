@@ -24,7 +24,7 @@ plugins {
 
 android {
   namespace = "com.github.marlonlom.timeago.sample"
-  compileSdk = 35
+  compileSdk = 36
 
   defaultConfig {
     applicationId = "com.github.marlonlom.timeago.sample"
