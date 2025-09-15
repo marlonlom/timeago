@@ -11,7 +11,7 @@ androidx-lifecycle-runtime-ktx = "androidx.lifecycle:lifecycle-runtime-ktx:2.9.3
 androidx-core-ktx = "androidx.core:core-ktx:1.17.0"
 
 # implementation: androidx.compose:compose-bom
-androidx-compose-bom = "androidx.compose:compose-bom:2025.08.01"
+androidx-compose-bom = "androidx.compose:compose-bom:2025.09.00"
 androidx-ui = { module = "androidx.compose.ui:ui" }
 androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
