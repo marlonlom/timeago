@@ -63,10 +63,10 @@ internal fun SampleTabPagerContent(pagerState: PagerState, sampleTabs: SampleTab
       ),
     verticalAlignment = Alignment.Top,
     state = pagerState,
-  ) {
-    sampleTabs[it].also {
+  ) { page ->
+    sampleTabs[page].also { tab ->
       val annotatedString = buildAnnotatedString {
-        append(AnnotatedString.fromHtml(it.information))
+        append(AnnotatedString.fromHtml(tab.information))
       }
       Column(
         Modifier.verticalScroll(rememberScrollState()),
