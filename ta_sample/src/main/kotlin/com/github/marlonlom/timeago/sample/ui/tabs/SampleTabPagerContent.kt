@@ -30,7 +30,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.fromHtml
@@ -48,9 +48,9 @@ import com.github.marlonlom.timeago.sample.R
  */
 @Composable
 internal fun SampleTabPagerContent(pagerState: PagerState, sampleTabs: SampleTabItems) {
-  val context = LocalContext.current
-  val topMargin = context.resources.getDimension(R.dimen.appbar_padding_top)
-  val horizontalMargin = context.resources.getDimension(R.dimen.activity_horizontal_margin)
+  val resources = LocalResources.current
+  val topMargin = resources.getDimension(R.dimen.appbar_padding_top)
+  val horizontalMargin = resources.getDimension(R.dimen.activity_horizontal_margin)
   HorizontalPager(
     modifier = Modifier
       .fillMaxSize()

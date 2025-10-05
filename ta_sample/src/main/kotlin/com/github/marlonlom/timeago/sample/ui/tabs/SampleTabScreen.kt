@@ -18,11 +18,13 @@ package com.github.marlonlom.timeago.sample.ui.tabs
 
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.twotone.HourglassBottom
+import androidx.compose.material.icons.twotone.HourglassTop
 import androidx.compose.material.icons.twotone.Info
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import com.github.marlonlom.timeago.sample.R
 import com.github.marlonlom.timeago.sample.utils.SupportedLanguageSelector
 
@@ -33,30 +35,32 @@ import com.github.marlonlom.timeago.sample.utils.SupportedLanguageSelector
  */
 @Composable
 internal fun SampleTabScreen() {
-  val context = LocalContext.current
+  val resources = LocalResources.current
 
-  val tabDetailTpl = context.getString(R.string.tabbed_main_detail_item)
+  val tabDetailTpl = resources.getString(R.string.tabbed_main_detail_item)
   val sampleTabs = listOf(
     SampleTab(
       icon = Icons.TwoTone.Info,
-      title = context.getString(R.string.tabbed_main_tab_how_to),
-      information = context.getString(
+      title = resources.getString(R.string.tabbed_main_tab_how_to),
+      information = resources.getString(
         R.string.tabbed_main_detail_how_to,
         SupportedLanguageSelector.availableLanguageText,
       ),
     ),
     SampleTab(
-      title = context.getString(R.string.tabbed_main_tab_from),
+      icon = Icons.TwoTone.HourglassBottom,
+      title = resources.getString(R.string.tabbed_main_tab_from),
       information = TabInformationSelector.prepareUsageDatesInformation(
-        context = context,
+        resources = resources,
         tabDetailTpl = tabDetailTpl,
         isPast = true,
       ),
     ),
     SampleTab(
-      title = context.getString(R.string.tabbed_main_tab_until),
+      icon = Icons.TwoTone.HourglassTop,
+      title = resources.getString(R.string.tabbed_main_tab_until),
       information = TabInformationSelector.prepareUsageDatesInformation(
-        context = context,
+        resources = resources,
         tabDetailTpl = tabDetailTpl,
         isPast = false,
       ),
