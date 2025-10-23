@@ -21,6 +21,7 @@ plugins {
   id("java-library")
   alias(libs.plugins.kotlin.jvm)
   id("org.jetbrains.dokka")
+  id("org.jetbrains.dokka-javadoc")
   id("maven-publish")
 }
 
@@ -56,9 +57,8 @@ dependencies {
   testImplementation(libs.junit)
 }
 
-val dokkaJavadocJar by tasks.register<Jar>("dokkaJavadocJar") {
-  dependsOn(tasks.dokkaJavadoc)
-  from(tasks.dokkaJavadoc.flatMap { it.outputDirectory })
+val dokkaJavadocJar by tasks.registering(Jar::class) {
+  from(tasks.dokkaGeneratePublicationJavadoc.flatMap { it.outputDirectory })
   archiveClassifier.set("javadoc")
 }
 
