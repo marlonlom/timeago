@@ -22,7 +22,7 @@ androidx-material3 = { module = "androidx.compose.material3:material3" }
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 
 # implementation-plugins
-kotlin-gradle-plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.20"
+kotlin-gradle-plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.21"
 
 # test-implementation
 junit = "junit:junit:4.13.2"
