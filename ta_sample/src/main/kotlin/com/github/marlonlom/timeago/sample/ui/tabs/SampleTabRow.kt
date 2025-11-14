@@ -19,8 +19,8 @@ package com.github.marlonlom.timeago.sample.ui.tabs
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.Tab
-import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight
@@ -37,7 +37,11 @@ import kotlinx.coroutines.launch
  * @param coroutineScope Coroutine scope.
  */
 @Composable
-internal fun SampleTabRow(pagerState: PagerState, sampleTabs: SampleTabItems, coroutineScope: CoroutineScope) = TabRow(
+internal fun SampleTabRow(
+  pagerState: PagerState,
+  sampleTabs: SampleTabItems,
+  coroutineScope: CoroutineScope
+) = PrimaryTabRow(
   containerColor = MaterialTheme.colorScheme.background,
   contentColor = MaterialTheme.colorScheme.onBackground,
   selectedTabIndex = pagerState.currentPage,
