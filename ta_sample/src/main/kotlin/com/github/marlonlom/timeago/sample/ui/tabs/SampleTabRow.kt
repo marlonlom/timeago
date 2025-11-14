@@ -37,11 +37,7 @@ import kotlinx.coroutines.launch
  * @param coroutineScope Coroutine scope.
  */
 @Composable
-internal fun SampleTabRow(
-  pagerState: PagerState,
-  sampleTabs: SampleTabItems,
-  coroutineScope: CoroutineScope
-) = PrimaryTabRow(
+internal fun SampleTabRow(pagerState: PagerState, sampleTabs: SampleTabItems, coroutineScope: CoroutineScope) = PrimaryTabRow(
   containerColor = MaterialTheme.colorScheme.background,
   contentColor = MaterialTheme.colorScheme.onBackground,
   selectedTabIndex = pagerState.currentPage,
