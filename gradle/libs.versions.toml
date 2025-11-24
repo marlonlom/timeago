@@ -2,7 +2,7 @@
 agp = "8.13.1"
 dokka = "2.1.0"
 kotlin = "2.2.21"
-spotless = "8.0.0"
+spotless = "8.1.0"
 
 [libraries]
 # implementation
