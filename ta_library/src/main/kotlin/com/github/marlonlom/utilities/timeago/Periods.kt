@@ -58,7 +58,15 @@ internal enum class Periods(val propertyKey: String, private val predicate: Dist
   ABOUT_AN_HOUR_PAST(
     "ml.timeago.aboutanhour.past",
     object : DistancePredicate {
-      override fun validateDistanceMinutes(distance: Long): Boolean = distance in 45..89
+      override fun validateDistanceMinutes(distance: Long): Boolean = distance in 45..59
+    },
+  ),
+
+  /** TimeAgo Period Enum: Past one hour. */
+  ONE_HOURS_PAST(
+    "ml.timeago.onehour.past",
+    object : DistancePredicate {
+      override fun validateDistanceMinutes(distance: Long): Boolean = distance in 60..120
     },
   ),
 
@@ -66,7 +74,7 @@ internal enum class Periods(val propertyKey: String, private val predicate: Dist
   X_HOURS_PAST(
     "ml.timeago.xhours.past",
     object : DistancePredicate {
-      override fun validateDistanceMinutes(distance: Long): Boolean = distance in 90..1439
+      override fun validateDistanceMinutes(distance: Long): Boolean = distance in 120..1439
     },
   ),
 
@@ -170,7 +178,15 @@ internal enum class Periods(val propertyKey: String, private val predicate: Dist
   ABOUT_AN_HOUR_FUTURE(
     "ml.timeago.aboutanhour.future",
     object : DistancePredicate {
-      override fun validateDistanceMinutes(distance: Long): Boolean = distance <= -45 && distance >= -89
+      override fun validateDistanceMinutes(distance: Long): Boolean = distance <= -45 && distance >= -59
+    },
+  ),
+
+  /** TimeAgo Period Enum: One hour in the future. */
+  ONE_HOUR_FUTURE(
+    "ml.timeago.onehour.future",
+    object : DistancePredicate {
+      override fun validateDistanceMinutes(distance: Long): Boolean = distance <= -60 && distance >= -120
     },
   ),
 
@@ -178,7 +194,7 @@ internal enum class Periods(val propertyKey: String, private val predicate: Dist
   X_HOURS_FUTURE(
     "ml.timeago.xhours.future",
     object : DistancePredicate {
-      override fun validateDistanceMinutes(distance: Long): Boolean = distance <= -90 && distance >= -1439
+      override fun validateDistanceMinutes(distance: Long): Boolean = distance <= -120 && distance >= -1439
     },
   ),
 
