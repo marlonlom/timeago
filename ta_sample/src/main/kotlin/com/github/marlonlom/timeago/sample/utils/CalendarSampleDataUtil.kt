@@ -16,7 +16,7 @@
  */
 package com.github.marlonlom.timeago.sample.utils
 
-import java.util.*
+import java.util.Calendar
 
 /**
  * The type Calendar sample data util.
@@ -37,6 +37,7 @@ object CalendarSampleDataUtil {
     addDateTimeWithOneMinute(listing, currentTime, isPast)
     addDateTimeWithNineMinutes(listing, currentTime, isPast)
     addDateTimeWithFiftyOneMinutes(listing, currentTime, isPast)
+    addDateTimeWithOneHour(listing, currentTime, isPast)
     addDateTimeWithFiveHours(listing, currentTime, isPast)
     addDateTimeWithOneDay(listing, currentTime, isPast)
     addDateTimeWithTenDays(listing, currentTime, isPast)
@@ -221,6 +222,21 @@ object CalendarSampleDataUtil {
     } else {
       calendar.add(Calendar.SECOND, 62)
     }
+    listing.add(calendar.timeInMillis)
+  }
+
+  /**
+   * Add date time with one hour.
+   *
+   * @param listing     the listing
+   * @param currentTime the current time
+   * @param isPast      true/false if past time
+   */
+  private fun addDateTimeWithOneHour(listing: MutableList<Long>, currentTime: Long, isPast: Boolean) {
+    val calendar = Calendar.getInstance()
+    calendar.timeInMillis = currentTime
+    calendar.add(Calendar.HOUR, if (isPast) -1 else 1)
+    calendar.add(Calendar.MINUTE, if (isPast) -1 else 1)
     listing.add(calendar.timeInMillis)
   }
 }

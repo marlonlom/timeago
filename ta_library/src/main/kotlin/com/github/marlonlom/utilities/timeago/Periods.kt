@@ -63,10 +63,10 @@ internal enum class Periods(val propertyKey: String, private val predicate: Dist
   ),
 
   /** TimeAgo Period Enum: Past one hour. */
-  ONE_HOURS_PAST(
+  ONE_HOUR_PAST(
     "ml.timeago.onehour.past",
     object : DistancePredicate {
-      override fun validateDistanceMinutes(distance: Long): Boolean = distance in 60..120
+      override fun validateDistanceMinutes(distance: Long): Boolean = distance in 60..119
     },
   ),
 
@@ -186,7 +186,7 @@ internal enum class Periods(val propertyKey: String, private val predicate: Dist
   ONE_HOUR_FUTURE(
     "ml.timeago.onehour.future",
     object : DistancePredicate {
-      override fun validateDistanceMinutes(distance: Long): Boolean = distance <= -60 && distance >= -120
+      override fun validateDistanceMinutes(distance: Long): Boolean = distance <= -60 && distance >= -119
     },
   ),
 
