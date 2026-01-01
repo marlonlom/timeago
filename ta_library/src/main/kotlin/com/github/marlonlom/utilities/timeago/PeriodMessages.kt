@@ -23,7 +23,7 @@ import kotlin.math.roundToLong
  * Period messages builder object.
  *
  * @author marlonlom
- * @version 4.1.0
+ * @version 4.2.0
  * @since 4.1.0
  */
 internal object PeriodMessages {

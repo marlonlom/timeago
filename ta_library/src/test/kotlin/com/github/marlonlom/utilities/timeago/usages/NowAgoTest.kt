@@ -36,7 +36,7 @@ import java.util.ResourceBundle
  * Unit tests class for TimeAgo usage for current date time.
  *
  * @author marlonlom
- * @version 4.1.0
+ * @version 4.2.0
  * @since 2.1.0
  */
 @RunWith(JUnit4::class)

@@ -39,7 +39,7 @@ import kotlin.math.roundToLong
  * <br></br>
  *
  * @author marlonlom
- * @version 4.1.0
+ * @version 4.2.0
  * @see TimeAgoMessages
  *
  * @since 1.0.0
