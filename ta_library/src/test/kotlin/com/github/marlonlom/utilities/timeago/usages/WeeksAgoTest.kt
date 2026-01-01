@@ -36,7 +36,7 @@ import java.util.Calendar.getInstance as getCalendarInstance
  * Unit tests class for TimeAgo weeks usage.
  *
  * @author marlonlom
- * @version 4.1.0
+ * @version 4.2.0
  * @since 4.1.0
  */
 @RunWith(JUnit4::class)

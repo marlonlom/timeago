@@ -20,7 +20,7 @@ package com.github.marlonlom.utilities.timeago
  * Interface definition for handling distance validations or periods.
  *
  * @author marlonlom
- * @version 4.1.0
+ * @version 4.2.0
  * @see Periods
  *
  * @since 1.0.0
