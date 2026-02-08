@@ -44,11 +44,7 @@ import kotlin.math.roundToLong
  *
  * @since 1.0.0
  */
-class TimeAgo
-/**
- * Instantiates a new Time ago.
- */
-private constructor() {
+class TimeAgo private constructor() {
 
   companion object {
 
