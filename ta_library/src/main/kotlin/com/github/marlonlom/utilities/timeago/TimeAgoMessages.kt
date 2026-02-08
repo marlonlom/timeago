@@ -47,11 +47,7 @@ import java.util.*
  * @version 4.2.0
  * @since 1.0.0
  */
-class TimeAgoMessages
-/**
- * Instantiates a new time ago messages.
- */
-private constructor() {
+class TimeAgoMessages private constructor() {
   /**
    * The resource bundle for holding the language messages.
    */
