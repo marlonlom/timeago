@@ -1,0 +1,2 @@
+# Regla para los archivos de mensajes de la librería TimeAgo
+ta_library/src/main/resources/**/messages*.properties text eol=lf working-tree-encoding=UTF-8
