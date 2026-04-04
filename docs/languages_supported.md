@@ -1,7 +1,5 @@
 # Languages supported
 
-TBD
-
 ## Adding a new language
 Ensure that your code adheres to the existing style in the sample to which you are contributing.
 
@@ -34,16 +32,19 @@ Ensure that your code adheres to the existing style in the sample to which you a
 | AR                 | Arabic           |             | [Mohamed Helmy](https://github.com/mohamed-helmy)  |
 | CS                 | Czech            |             | [Martin Macko](https://github.com/LinkedList)      |
 | DA                 | Danish           |             | [soelling](https://github.com/soelling)            |
-| DE                 | German           |             |                                                    |
+| DE                 | German           |             | [Christoph Kührer](https://github.com/christxph)   |
 | EN                 | English          |      Y      |                                                    |
 | ES                 | Spanish          |             |                                                    |
 | EU                 | Basque           |             | [Sendoa Portuondo](https://github.com/sportuondo)  |
 | FA                 | Farsi            |             | [Amir Hossein Ghasemi](https://github.com/amirghm) |
+| FIL                | Filipino         |             | [Makoto Yamazaki](https://github.com/zaki50)       |
 | FR                 | French           |             | [Olivier Perez](https://github.com/olivierperez)   |
 | HI                 | Hindi            |             | [qsyogesh](https://github.com/qsyogesh)            |
 | HU                 | Hungarian        |             | [Sándor Uszkai](https://github.com/uszkaisandor)   |
 | IN                 | Indonesian       |             | [Irsal Shabirin](https://github.com/irsalshabirin) |
-| IT                 | Italian          |             |                                                    |
+| IT                 | Italian          |             | [Matteo Diblas](https://github.com/alex3025)       |
+| JA                 | Japanese         |             | [Makoto Yamazaki](https://github.com/zaki50), [MOCHIZUKI Kanon](https://github.com/mika-f)       |
+| KO                 | Korean           |             | [Makoto Yamazaki](https://github.com/zaki50)       |
 | NL                 | Dutch; Flemish   |             | [Pieter De Clercq](https://github.com/thepieterdc) |
 | PL                 | Polish           |             | [John McKean](https://github.com/johnpaulmckean)   |
 | PT                 | Portuguese       |             |                                                    |
