@@ -1,5 +1,5 @@
 [versions]
-agp = "9.2.0"
+agp = "9.2.1"
 dokka = "2.2.0"
 kotlin = "2.3.21"
 spotless = "8.4.0"
