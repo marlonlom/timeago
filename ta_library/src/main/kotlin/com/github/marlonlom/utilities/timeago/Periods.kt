@@ -22,7 +22,7 @@ import kotlin.math.roundToLong
  * The enum Periods.
  *
  * @author marlonlom
- * @version 4.2.0
+ * @version 4.3.0
  * @since 2.0.0
  *
  * @property propertyKey Property key.
